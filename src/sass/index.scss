@@ -1,2 +1,13 @@
-@import './common';
-@import './example';
+@import './base/common';
+@import './base/fonts';
+@import './utils/vars';
+@import './components/logo';
+@import './components/button';
+@import './components/pagination';
+@import './components/movie_modal';
+@import './components/loader';
+@import './layout/homepage_header';
+@import './layout/library_header';
+@import './layout/homepage_container';
+@import './layout/library_container';
+@import './layout/footer';
