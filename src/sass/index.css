@@ -50,8 +50,8 @@ body {
 @media screen and (min-width: 768px) {
   .container {
     width: 768px;
-    padding-left: 76px;
-    padding-right: 76px;
+    padding-left: 75px;
+    padding-right: 75px;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -85,7 +85,6 @@ body {
   padding-top: 40px;
   padding-bottom: 44px;
   background-color: rgba(0, 0, 0, 0.56);
-  opacity: 0.9;
   max-width: 100%;
   margin: 0 auto;
   background-image: url(../images/header-home/header-home-mobile.jpg);
@@ -177,6 +176,9 @@ nav {
 }
 
 @media screen and (min-width: 768px) {
+  .header__logo-mobile {
+    display: none;
+  }
   .header {
     background-image: url(../images/header-home/header-home-tablet.jpg);
   }
