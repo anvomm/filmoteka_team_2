@@ -1,0 +1,151 @@
+.header__logo-text {
+  display: none;
+}
+
+.header {
+  padding-top: 40px;
+  padding-bottom: 44px;
+  background-color: rgba(0, 0, 0, 0.56);
+  opacity: 0.9;
+  max-width: 100%;
+  margin: 0 auto;
+  //bg-image по аналогии с homework8 html/css: pictures are not optimized
+  background-image: url(../images/header-home/header-home-mobile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .header {
+    background-image: url(../images/header-home/header-home-mobile@2x.jpg);
+  }
+}
+nav {
+  margin-bottom: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-list__item + .nav-list__item {
+  margin-left: 40px;
+}
+.nav-list__link {
+  text-decoration: none;
+  text-transform: uppercase;
+  // font-family: 'Roboto';
+  // font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+}
+.search-form {
+  position: relative;
+}
+.search-form button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: -5px;
+}
+.search-form input {
+  margin-bottom: 16px;
+  padding-bottom: 4px;
+  width: 100%;
+  background-color: transparent;
+  border: transparent;
+  outline: unset;
+  border-bottom: 0.5px solid #fff;
+  //font-family: 'Roboto';
+  font-size: 14px;
+  //line-height: 1.14; //нет смысла, в инпуте только одна строка
+  color: #ffffff;
+  &::placeholder {
+    color: #ffffff;
+  }
+}
+.search-form__error-text {
+  // font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 1.14;
+  color: #ff001b;
+}
+.nav-list__link_current {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #ff001b;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    background-image: url(../images/header-home/header-home-tablet.jpg);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .header {
+      background-image: url(../images/header-home/header-home-tablet@2x.jpg);
+    }
+  }
+  .logo {
+    margin-right: 8px;
+  }
+  .header__logo-text {
+    display: block;
+    text-decoration: none;
+    // font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 30px;
+    // line-height: 35px; //нет смысла, в logo-text только одна строка
+    color: #ffffff;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-form {
+    width: 336px;
+    margin: 0 auto;
+  }
+  .search-form input {
+    margin-bottom: 20px;
+  }
+  .search-form__error-text {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    background-image: url(../images/header-home/header-home-desktop.jpg);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .header {
+      background-image: url(../images/header-home/header-home-desktop@2x.jpg);
+    }
+  }
+  .logo {
+    margin-right: 10px;
+  }
+  .search-form {
+    width: 394px;
+  }
+}
