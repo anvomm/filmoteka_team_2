@@ -20,3 +20,56 @@
     border-color: #ff6b01;
   }
 }
+
+
+/* КНОПКА ВВЕРХ */
+
+@media screen and (min-width: 768px) {
+  .arrow_uptop {
+    position: fixed;
+    display: block;
+    box-sizing: border-box;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: $bg-btn-uptop;
+    border-radius: 5px;
+    bottom: 12px;
+    right: 50px;
+    margin-right: -30px;
+    outline: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, margin-right 0.5s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bg-btn-uptop-h;
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+    }
+  }
+
+  .arrow_upview {
+    transition: opacity 0.3s ease, margin-right 0.5s ease-out;
+    margin-right: 0px;
+    opacity: 0.6;
+  }
+
+  .arrow_uptop::before,
+  .arrow_uptop::after {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 2px;
+    background-color: #ff6b08;
+    top: 16px;
+  }
+  .arrow_uptop::before {
+    left: 18px;
+    transform: rotate(45deg);
+  }
+  .arrow_uptop::after {
+    right: 18px;
+    transform: rotate(-45deg);
+  }
+}
