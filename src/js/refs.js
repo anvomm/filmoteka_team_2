@@ -11,6 +11,7 @@ export default function refs() {
     formInput: document.querySelector('.header__search-input'),
     notification: document.querySelector('.header__error-text'),
     lampadario: document.querySelector('#lampadario'),
+    switch: document.querySelector('.switch'),
     body: document.querySelector('body'),
     modalTmp: document.querySelector('.modal .modal-content'),
   };
