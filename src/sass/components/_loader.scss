@@ -5,8 +5,34 @@
   left: 50%;
   width: 80px;
   height: 80px;
+  transform: translateX(-50%);
+  transform: translateZ(50%);
   transform: rotate(45deg);
   transform-origin: 40px 40px;
+
+  /* @media screen and (min-width: 480px) {
+    left: 43%;
+  }
+
+  @media screen and (min-width: 640px) {
+    left: 44%;
+  }
+
+  @media screen and (min-width: 800px) {
+    left: 45%;
+  }
+
+  @media screen and (min-width: 960px) {
+    left: 46%;
+  }
+
+  @media screen and (min-width: 1160px) {
+    left: 47%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    left: 48%;
+  } */
 }
 
 .loader div {
