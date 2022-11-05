@@ -1,20 +1,24 @@
 import refsList from './refs';
 import { fetchMovieByQuery } from './fetchMovies';
+// import { renderList } from './renderFilmList';
+
 
 const refs = refsList();
 
 refs.form.addEventListener('submit', onSubmitForm);
   
 
-export async function onSubmitForm(event) {
+function onSubmitForm(event) {
   event.preventDefault();
 
-
+const page = 1
   const query = refs.formInput.value.trim();
-  const response = await fetchMovieByQuery(query);
-  const movies = await response.results;
+  const response = fetchMovieByQuery(query, page);
+  const movies = response.results;
 
-  refs.formInput.value = '';
+    refs.formInput.value = '';
+    
+    movieSearcher(query, page)
 
   if (movies.length === 0) {
     
@@ -27,3 +31,7 @@ export async function onSubmitForm(event) {
 
 //   вызываем функцию рисования разметки
 }
+
+
+
+
