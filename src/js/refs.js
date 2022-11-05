@@ -1,7 +1,8 @@
 export default function refs() {
   return {
+    filmsElements: document.querySelectorAll('[data-modal-open]'),
     filmsList: document.querySelector('.all-films-list'),
-    openModalBtn: document.querySelector('[data-modal-open]'),
+    // openModalBtn: document.querySelector('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
     backdrop: document.querySelector('.backdrop'),
@@ -11,5 +12,6 @@ export default function refs() {
     notification: document.querySelector('.header__error-text'),
     lampadario: document.querySelector('#lampadario'),
     body: document.querySelector('body'),
+    modalTmp: document.querySelector('.modal .modal-content'),
   };
 }
