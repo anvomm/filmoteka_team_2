@@ -17,7 +17,9 @@ refs.pagination.addEventListener('click', event => {
       renderList(data);
     });
 });
-console.log(refs.paginationLastPageBtn.textContent);
-export function putLastPageNumber(number) {
+
+export function stylizePaginationOnStart(number) {
   refs.paginationLastPageBtn.textContent = number;
+  refs.paginationArrowLeft.classList.add('visually-hidden');
+  refs.paginationDotsLeft.style.display = 'none';
 }

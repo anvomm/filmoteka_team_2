@@ -5,12 +5,12 @@ import './js/search';
 
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
-import { putLastPageNumber } from './js/pagination';
+import { stylizePaginationOnStart } from './js/pagination';
 
 fetchTrendingMovies(1).then(data => {
   if (data) {
     renderList(data.results);
-    putLastPageNumber(data.total_pages);
+    stylizePaginationOnStart(data.total_pages);
   }
 });
 
