@@ -9,5 +9,7 @@ export default function refs() {
     form: document.querySelector('.header__search-form'),
     formInput: document.querySelector('.header__search-input'),
     notification: document.querySelector('.header__error-text'),
+    lampadario: document.querySelector('#lampadario'),
+    body: document.querySelector('body'),
   };
 }
