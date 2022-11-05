@@ -1,0 +1,22 @@
+.logo__text {
+  display: none;
+}
+.logo__icon {
+  fill: transparent;
+  stroke: #ff6b08;
+}
+@media screen and (min-width: 768px) {
+  .logo__text {
+    display: block;
+    margin-left: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    color: $white-color;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+}
