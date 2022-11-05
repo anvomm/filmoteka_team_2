@@ -1,43 +1,43 @@
 <header class="header">
-  <div class="container">
-    <nav>
-      <div class="logo-container">
-        <a href="./index.html" class="header__logo-mobile"
-          ><svg width="24" height="24">
-            <use href="./images/sprite.svg#header-logo-film-icon"></use></svg
-        ></a>
-        <a href="./index.html" class="header__logo-text"
-          ><svg class="logo" width="24" height="24">
-            <use href="./images/sprite.svg#header-logo-film-icon"></use></svg
-          >Filmoteka</a
-        >
-      </div>
-      <ul class="nav-list">
-        <li class="nav-list__item">
-          <a href="./index.html" class="nav-list__link nav-list__link_current"
+  <div class="header__container">
+    <nav class="header__navigation">
+      <a href="./index.html" class="logo"
+        ><svg class="logo__icon" width="24" height="24">
+          <use href="./images/sprite.svg#header-logo-film-icon"></use>
+        </svg>
+        <span class="logo__text">Filmoteka</span></a
+      >
+
+      <ul class="header__navigation-list">
+        <li class="header__navigation-item">
+          <a
+            href="./index.html"
+            class="header__navigation-link header__navigation-link_current"
             >Home</a
           >
         </li>
-        <li class="nav-list__item">
-          <a href="./library.html" class="nav-list__link">My library</a>
+        <li class="header__navigation-item">
+          <a href="./library.html" class="header__navigation-link"
+            >My library</a
+          >
         </li>
       </ul>
     </nav>
-    <form class="search-form" id="search-form">
+    <form class="header__search-form" id="search-form">
       <input
-      class="form-input"
+        class="header__search-input"
         type="text"
         name="searchQuery"
         autocomplete="off"
         placeholder="Movie search"
       />
-      <button class="search-btn" type="submit">
+      <button class="header__search-btn" type="submit">
         <svg class="icon-search" width="12" height="12">
           <use href="./images/sprite.svg#header-search-icon"></use>
         </svg>
       </button>
     </form>
-    <p class="search-form__error-text off">
+    <p class="header__error-text off">
       Search result not successful. Enter the correct movie name and
     </p>
   </div>

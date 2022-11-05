@@ -6,7 +6,6 @@ import { fetchMovieByQuery } from './fetchMovies';
 const refs = refsList();
 
 refs.form.addEventListener('submit', onSubmitForm);
-  
 
 function onSubmitForm(event) {
   event.preventDefault();
@@ -21,7 +20,6 @@ const page = 1
     movieSearcher(query, page)
 
   if (movies.length === 0) {
-    
     refs.notification.classList.remove('off');
     setTimeout(() => {
       refs.notification.classList.add('off');
@@ -29,7 +27,7 @@ const page = 1
     return;
   }
 
-//   вызываем функцию рисования разметки
+  //   вызываем функцию рисования разметки
 }
 
 
