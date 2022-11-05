@@ -1,6 +1,7 @@
 import createMarkUp from '../templates/films-card.hbs';
 import refsList from './refs';
 import { fetchGenres } from './fetchMovies';
+import { onOpenModal } from './modal';
 
 const refs = refsList();
 
@@ -24,5 +25,10 @@ export async function renderList(data) {
         return createMarkUp(film);
     }).join('');
     refs.filmsList.insertAdjacentHTML('beforeend', markup);
+
+
+    refsList().filmsElements.forEach(card =>
+        card.addEventListener('click', onOpenModal)
+    );
 }
 
