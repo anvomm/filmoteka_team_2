@@ -24,7 +24,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .modal {
     max-width: 806px;
     height: 558px;
@@ -159,7 +159,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .film-card {
+  .modal__wrap {
     display: flex;
   }
 
