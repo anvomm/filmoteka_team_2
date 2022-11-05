@@ -87,10 +87,27 @@
   font-size: 14px;
   //line-height: 1.14; //нет смысла, в инпуте только одна строка
   color: #ffffff;
+  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &::placeholder {
     color: #ffffff;
   }
+
+  &:hover,
+  &:focus {
+    border-bottom: 0.5px solid $accent-color;
+  }
 }
+
+.icon-search {
+  stroke: $white-color;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .header__search-btn:hover &,
+  .header__search-btn:focus & {
+    stroke: $accent-color;
+  }
+}
+
 .header__search-btn {
   background: none;
   border: none;
