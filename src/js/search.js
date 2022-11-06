@@ -63,20 +63,22 @@ export async function onSubmitForm(event) {
     //   refs.notification.textContent = ''
 
 }
-
-
+    refs.notification.textContent = `Wow! We found ${response.total_results} results on request "${query}"!`;
+    refs.notification.style.color = '#818181';
     refs.formInput.value = '';
     
    
     if (movies.length === 0) {
         refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
+        refs.notification.style.color = '#ff001b';
         setTimeout(() => {
             refs.notification.textContent = '';
         }, 2000);
         return;
     }
 
-    
+  
+
 
   renderList(movies);
   //   вызываем функцию рисования разметки
