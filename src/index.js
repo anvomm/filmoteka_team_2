@@ -3,6 +3,11 @@ import './js/uptop';
 import './js/loader';
 import './js/search';
 
+
+
+import './js/themeSwitcher';
+import './js/localStorage';
+
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
 import { stylizePaginationOnStart } from './js/pagination';
