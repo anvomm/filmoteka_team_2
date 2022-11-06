@@ -1,23 +1,28 @@
-import refsList from './refs';
-import { fetchMovieByQuery } from './fetchMovies';
-// import { renderList } from './renderFilmList';
+import refsList from './refs.js';
+import { fetchMovieByQuery } from './fetchMovies.js';
+import { renderList } from './renderFilmList.js';
 
 
 const refs = refsList();
 
+
+
 refs.form.addEventListener('submit', onSubmitForm);
 
-function onSubmitForm(event) {
+
+
+
+export async function onSubmitForm(event) {
   event.preventDefault();
 
-const page = 1
-  const query = refs.formInput.value.trim();
-  const response = fetchMovieByQuery(query, page);
-  const movies = response.results;
+  const page = 1;
+  const query = refs.formInput.value.trim(); //event.currentTarget.elements.searchQuery.value.trim();
+  const response = await fetchMovieByQuery(query, page);
+  const movies = await response.results;
 
-    refs.formInput.value = '';
-    
-    movieSearcher(query, page)
+  refs.formInput.value = '';
+
+  
 
   if (movies.length === 0) {
     refs.notification.classList.remove('off');
@@ -26,10 +31,7 @@ const page = 1
     });
     return;
   }
-
+  renderList(movies);
   //   вызываем функцию рисования разметки
 }
-
-
-
 
