@@ -64,7 +64,6 @@ export async function onSubmitForm(event) {
 
 }
 
-
     refs.notification.textContent = `Wow! We found ${response.total_results} results on request "${query}"!`;
     refs.notification.style.color = '#818181';
     refs.formInput.value = '';
@@ -76,9 +75,11 @@ export async function onSubmitForm(event) {
         refs.notification.textContent = '';
       }, 2000);
       return;
+
     }
 
-    
+  
+
 
   renderList(movies);
   //   вызываем функцию рисования разметки
