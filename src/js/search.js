@@ -1,16 +1,25 @@
-import refsList from './refs.js';
-import { fetchMovieByQuery } from './fetchMovies.js';
-import { renderList } from './renderFilmList.js';
+
+import refsList from './refs';
+import { fetchMovieByQuery } from './fetchMovies';
+import { renderList } from './renderFilmList';
+
 
 const refs = refsList();
 
 if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
 
+
+ //добавила этот момент, нужно, чтобы на странице библиотеки ошибку не било
+if (refs.form) {
+  refs.form.addEventListener('submit', onSubmitForm);
+}
 export async function onSubmitForm(event) {
   event.preventDefault();
 
   const page = 1;
-  const query = refs.formInput.value.trim(); //event.currentTarget.elements.searchQuery.value.trim();
+
+  const query = refs.formInput.value.trim();
+
   const response = await fetchMovieByQuery(query, page);
   const movies = await response.results;
 
@@ -23,6 +32,10 @@ export async function onSubmitForm(event) {
     });
     return;
   }
+
   renderList(movies);
   //   вызываем функцию рисования разметки
 }
+
+
+
