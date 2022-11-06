@@ -24,6 +24,8 @@ export default function refs() {
     modalTmp: document.querySelector('.modal .modal-content'),
     teamOpen: document.querySelector('.footer__link'),
     team: document.querySelector('.backdrop_team'),
+    teamClose: document.querySelector('[data-team-close]'),
+
     html: document.querySelector('html'),
   };
 }
