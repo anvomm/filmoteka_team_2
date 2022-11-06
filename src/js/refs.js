@@ -20,6 +20,7 @@ export default function refs() {
     paginationDotsLeft: document.querySelector('.pagination__dots_left'),
     lampadario: document.querySelector('#lampadario'),
     switch: document.querySelector('.switch'),
+    lightOn: document.querySelector('.on'),
     body: document.querySelector('body'),
     modalTmp: document.querySelector('.modal .modal-content'),
     teamOpen: document.querySelector('.footer__link'),

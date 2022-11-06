@@ -12,6 +12,7 @@ if (theme === 'dark') {
 
   refs.body.classList.add('theme-switcher');
   refs.switch.removeAttribute('checked');
+  refs.lightOn.setAttribute('checked', 'checked');
 
   if (theme === 'light') {
     refs.switch.setAttribute('checked', 'checked');
