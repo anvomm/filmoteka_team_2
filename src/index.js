@@ -10,7 +10,9 @@ import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
 import { stylizePaginationOnStart } from './js/pagination';
 
-fetchTrendingMovies(1).then(data => {
+let page = 1;
+
+fetchTrendingMovies(page).then(data => {
   if (data) {
     renderList(data.results);
     stylizePaginationOnStart(10);
