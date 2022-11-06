@@ -17,6 +17,7 @@
   @media screen and (max-width: 767px) {
     overflow-y: scroll;
     height: 100vh;
+    width: 80vh;
     padding: 30px 10px;
   }
 
@@ -41,8 +42,8 @@
 // card
 
 .team__logo {
-  height: 30px;
-  margin: 0 20px;
+  height: 40px;
+  margin: 0px;
 
   @media screen and (max-width: 767px) {
     & {
@@ -65,54 +66,76 @@
   justify-content: center;
   align-items: center;
 
-
   @media screen and (min-width: 768px) {
     & {
       width: 108px;
     }
   }
-
-  @media screen and (min-width: 768px) {
-    & {
-      width: 108px;
-    }
-  }
-
-  cursor: pointer;
-
 }
 
-.team__image {
+div.team__image {
   width: 100px;
   height: 100px;
   margin-bottom: 20px;
-  display: inline-block;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
-
-.team__image.first,
-.team__image.second {
+div.team__image img {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin: 0;
-  padding: 0;
+  position: absolute;
+  /*За счет transition, добиваемся плавности эффекта*/
+  -moz-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
   box-shadow: 0px 2px 7px rgba(34, 60, 80, 0.2);
 }
-
-.team__image.first {
-  display: block;
-  position: absolute;
-  z-index: 100;
-  transition-duration: 0.96s;
-  -webkit-transition-duration: 0.96s;
-  -moz-transition-duration: 0.96s;
-  -o-transition-duration: 0.96s;
-  -ms-transition-duration: 0.96s;
-}
-
-.team__image.first:hover {
+.team__image img.image__second {
   opacity: 0;
+  filter: alpha(opacity=0);
 }
+.team__image:hover img.image__second {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.team__image:hover img.image__first,
+.team__image img.image__first:hover {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+// .team__image {
+//   width: 100px;
+//   height: 100px;
+//   margin-bottom: 20px;
+//   display: inline-block;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+// }
+
+// .team__image__item.first,
+// .team__image__item.second {
+//   border-radius: 50%;
+//   margin: 0;
+//   padding: 0;
+//   box-shadow: 0px 2px 7px rgba(34, 60, 80, 0.2);
+// }
+
+// .team__image__item.first {
+//   opacity: 1px;
+//   display: block;
+//   position: absolute;
+//   z-index: 100;
+//   transition-duration: 0.96s;
+//   -webkit-transition-duration: 0.96s;
+//   -moz-transition-duration: 0.96s;
+//   -o-transition-duration: 0.96s;
+//   -ms-transition-duration: 0.96s;
+// }
+
+// .team__image__item.first:hover {
+//   opacity: 0;
+// }
 
 .team__name {
   text-align: center;

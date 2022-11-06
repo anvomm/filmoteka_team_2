@@ -49,7 +49,7 @@ a {
 }
 #filo {
   position: relative;
-  background-color: #000000;
+  background-color: #de732e69;
   width: 2px;
   height: 100px;
   left: 50%;
@@ -138,22 +138,22 @@ label {
   animation: oscillaLampadina 0.9s ease-in-out 0s infinite alternate;
 }
 .switcher-input[value='off']:checked ~ label {
-  background: rgba(255, 255, 255, 0.03);
-  -webkit-box-shadow: inset 0px 1px 5px rgba(255, 255, 255, 0.1),
+  background: rgba(255, 215, 141, 0.161);
+  -webkit-box-shadow: inset 0px 1px 5px rgba(250, 10, 10, 0.1),
     inset 0px 2px 20px rgba(255, 255, 255, 0.07),
-    -80px -15px 15px -5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0px 1px 5px rgba(255, 255, 255, 0.1),
+    -80px -15px 15px -5px rgba(251, 13, 13, 0.1);
+  -moz-box-shadow: inset 0px 1px 5px rgba(240, 22, 22, 0.1),
     inset 0px 2px 20px rgba(255, 255, 255, 0.07),
     -80px -15px 15px -5px rgba(0, 0, 0, 0.1);
   -ms-box-shadow: inset 0px 1px 5px rgba(255, 255, 255, 0.1),
     inset 0px 2px 20px rgba(255, 255, 255, 0.07),
     -80px -15px 15px -5px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: inset 0px 1px 5px rgba(255, 255, 255, 0.1),
-    inset 0px 2px 20px rgba(255, 255, 255, 0.07),
-    -80px -15px 15px -5px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0px 1px 5px rgba(255, 255, 255, 0.1),
-    inset 0px 2px 20px rgba(255, 255, 255, 0.07),
-    -80px -15px 15px -5px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: inset 0px 1px 5px rgba(248, 10, 10, 0.1),
+    inset 0px 2px 20px rgba(245, 0, 0, 0.07),
+    -80px -15px 15px -5px rgba(243, 7, 7, 0.1);
+  box-shadow: inset 0px 1px 5px rgba(255, 211, 167, 0.944),
+    inset 0px 2px 20px rgba(255, 196, 118, 0.246),
+    -80px -15px 15px -5px rgba(252, 173, 3, 0.109);
 }
 .switcher-input[value='on']:checked ~ label {
   background: rgba(255, 255, 255, 1);
