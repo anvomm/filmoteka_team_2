@@ -26,5 +26,6 @@ export default function refs() {
     teamOpen: document.querySelector('.footer__link'),
     team: document.querySelector('.backdrop_team'),
     teamClose: document.querySelector('[data-team-close]'),
+    teamModalCloseBtn: document.querySelector('.team__close-btn'),
   };
 }

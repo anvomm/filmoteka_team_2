@@ -3,11 +3,18 @@ import refsList from './refs';
 const refs = refsList();
 
 refs.teamOpen.addEventListener('click', onClickTeamOpen);
+
 function onClickTeamOpen() {
   refs.team.classList.remove('is-hidden');
 
-  window.addEventListener('keydown', onEscClose);
-  refs.team.addEventListener('click', onBackdropClickClose);
+  addListenersForClose();
+}
+
+function onCloseBtnClick() {
+  refs.team.classList.add('is-hidden');
+
+  contentDismove();
+  removeAllListeners();
 }
 
 function onEscClose(evt) {
@@ -15,8 +22,8 @@ function onEscClose(evt) {
     refs.team.classList.add('is-hidden');
   }
 
-  window.removeEventListener('keydown', onEscClose);
-  refs.team.removeEventListener('click', onBackdropClickClose);
+  contentDismove();
+  removeAllListeners();
 }
 
 function onBackdropClickClose(evt) {
@@ -24,6 +31,18 @@ function onBackdropClickClose(evt) {
 
   refs.team.classList.add('is-hidden');
 
+  contentDismove();
+  removeAllListeners();
+}
+
+function addListenersForClose() {
+  refs.teamModalCloseBtn.addEventListener('click', onCloseBtnClick);
+
+  window.addEventListener('keydown', onEscClose);
+  refs.team.addEventListener('click', onBackdropClickClose);
+}
+function removeAllListeners() {
+  refs.teamModalCloseBtn.removeEventListener('click', onCloseBtnClick);
   refs.team.removeEventListener('click', onBackdropClickClose);
   window.removeEventListener('keydown', onEscClose);
 }
