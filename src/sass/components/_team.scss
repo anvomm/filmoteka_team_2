@@ -57,6 +57,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .team__image {
@@ -135,4 +136,12 @@
   .social__link:focus & {
     fill: $accent-color;
   }
+}
+
+.team__item:hover .first {
+  display: none;
+}
+
+.team__item:hover .second {
+  display: block;
 }
