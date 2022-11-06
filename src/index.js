@@ -6,7 +6,9 @@ import './js/localStorage';
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
 
-fetchTrendingMovies(1).then(data => {
+let page = 1;
+
+fetchTrendingMovies(page).then(data => {
   if (data) {
     renderList(data.results);
   }
