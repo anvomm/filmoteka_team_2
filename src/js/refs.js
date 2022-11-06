@@ -26,5 +26,7 @@ export default function refs() {
     team: document.querySelector('.backdrop_team'),
     teamClose: document.querySelector('[data-team-close]'),
     teamModalCloseBtn: document.querySelector('.team__close-btn'),
+    libraryWatchedBtn: document.querySelector('.header-library__btn-watched'),
+    libraryQueueBtn: document.querySelector('.header-library__btn-queue'),
   };
 }
