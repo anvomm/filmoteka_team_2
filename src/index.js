@@ -5,6 +5,7 @@ import './js/search';
 import './js/themeSwitcher';
 import './js/localStorage';
 import './js/team';
+import './js/library';
 
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
