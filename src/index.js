@@ -1,6 +1,6 @@
 import './js/modal';
 import './js/uptop';
-import './js/loader';
+/* import './js/loader'; */
 import './js/search';
 import './js/themeSwitcher';
 import './js/localStorage';
