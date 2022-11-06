@@ -2,13 +2,9 @@ import refsList from './refs.js';
 import { fetchMovieByQuery } from './fetchMovies.js';
 import { renderList } from './renderFilmList.js';
 
-
 const refs = refsList();
 
 if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
-
-
-
 
 export async function onSubmitForm(event) {
   event.preventDefault();
@@ -20,8 +16,6 @@ export async function onSubmitForm(event) {
 
   refs.formInput.value = '';
 
-  
-
   if (movies.length === 0) {
     refs.notification.classList.remove('off');
     setTimeout(() => {
@@ -32,4 +26,3 @@ export async function onSubmitForm(event) {
   renderList(movies);
   //   вызываем функцию рисования разметки
 }
-
