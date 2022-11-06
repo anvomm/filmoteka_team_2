@@ -18,7 +18,7 @@ export async function renderList(data) {
       newArr.splice(2, newArr.length - 2, 'Other');
     }
 
-    el.genre_ids = newArr;
+    el.genre_ids = newArr.join(', ');
   });
 
   const markup = data
