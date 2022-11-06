@@ -6,6 +6,8 @@ import { onOpenModal } from './modal';
 const refs = refsList();
 
 export async function renderList(data) {
+  const loader = new ldLoader({ root: '.ldld.full' });
+  loader.on();
   const genersList = await fetchGenres();
   data.forEach(el => {
     const newArr = [];
@@ -18,7 +20,7 @@ export async function renderList(data) {
       newArr.splice(2, newArr.length - 2, 'Other');
     }
 
-    el.genre_ids = newArr;
+    el.genre_ids = newArr.join(', ');
   });
 
   const markup = data
@@ -33,4 +35,5 @@ export async function renderList(data) {
   refsList().filmsElements.forEach(card =>
     card.addEventListener('click', onOpenModal)
   );
+  loader.off();
 }

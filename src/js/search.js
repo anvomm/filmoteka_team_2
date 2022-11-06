@@ -1,10 +1,7 @@
-
 import refsList from './refs';
 import { fetchMovieByQuery } from './fetchMovies';
 import { fetchGenres } from './fetchMovies';
 import createMarkUp from '../templates/films-card.hbs';
-import { renderList } from './renderFilmList';
-
 
 
 const refs = refsList();
@@ -12,8 +9,7 @@ refs.notification.textContent = '';
 
 // if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
 
-
- //добавила этот момент, нужно, чтобы на странице библиотеки ошибку не било
+//добавила этот момент, нужно, чтобы на странице библиотеки ошибку не било
 if (refs.form) {
   refs.form.addEventListener('submit', onSubmitForm);
 }
@@ -23,18 +19,18 @@ export async function onSubmitForm(event) {
   const page = 1;
 
   const query = refs.formInput.value.trim();
+  const loader = new ldLoader({ root: '.ldld.full' });
+  loader.on();
 
   const response = await fetchMovieByQuery(query, page);
-    const movies = await response.results;
+  const movies = await response.results;
 
-    
+  //    function renderList(data) {
+  //       refs.filmsList.innerHTML = '';
+  //       const markup = createMarkUp({ ...data });
+  //       refs.filmsList.insertAdjacentHTML('afterbegin', markup);
+  //     }
 
-//    function renderList(data) {
-//       refs.filmsList.innerHTML = '';
-//       const markup = createMarkUp({ ...data });
-//       refs.filmsList.insertAdjacentHTML('afterbegin', markup);
-//     }
-    
   async function renderList(data) {
     const genersList = await fetchGenres();
     data.forEach(el => {
@@ -50,7 +46,7 @@ export async function onSubmitForm(event) {
 
       el.genre_ids = newArr.join(', ');
     });
-    
+
     refs.filmsList.innerHTML = '';
 
     const markup = data
@@ -60,11 +56,14 @@ export async function onSubmitForm(event) {
       .join('');
     if (refs.filmsList) {
       refs.filmsList.insertAdjacentHTML('beforeend', markup);
+      loader.off();
     }
+
       
     //   refs.notification.textContent = ''
 
 }
+
 
     refs.formInput.value = '';
     
@@ -82,6 +81,3 @@ export async function onSubmitForm(event) {
   renderList(movies);
   //   вызываем функцию рисования разметки
 }
-
-
-

@@ -1,15 +1,33 @@
+.team-close {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .team__container {
-  min-height: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 30px;
+  border-radius: 5px;
   margin: auto;
+  background-color: $white-color;
+
+  @media screen and (max-width: 767px) {
+    overflow-y: scroll;
+    height: 100vh;
+    padding: 30px 10px;
+  }
 
   @media screen and (min-width: 768px) {
-    width: 900px;
+    width: 770px;
+    height: 620px;
   }
 }
 
 .goit__wrapper {
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 
@@ -38,7 +56,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px 50px;
+  gap: 20px 35px;
 }
 
 .team__item {
@@ -46,6 +64,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
+  @media screen and (min-width: 768px) {
+    & {
+      width: 108px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    & {
+      width: 108px;
+    }
+  }
+
+  cursor: pointer;
+
 }
 
 .team__image {
@@ -124,4 +158,12 @@
   .social__link:focus & {
     fill: $accent-color;
   }
+}
+
+.team__item:hover .first {
+  display: none;
+}
+
+.team__item:hover .second {
+  display: block;
 }
