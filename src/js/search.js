@@ -3,6 +3,7 @@ import { fetchMovieByQuery } from './fetchMovies';
 import { fetchGenres } from './fetchMovies';
 import createMarkUp from '../templates/films-card.hbs';
 
+
 const refs = refsList();
 refs.notification.textContent = '';
 
@@ -57,6 +58,7 @@ export async function onSubmitForm(event) {
       refs.filmsList.insertAdjacentHTML('beforeend', markup);
       loader.off();
     }
+
       
     //   refs.notification.textContent = ''
 
@@ -76,6 +78,7 @@ export async function onSubmitForm(event) {
     }
 
   
+
 
   renderList(movies);
   //   вызываем функцию рисования разметки
