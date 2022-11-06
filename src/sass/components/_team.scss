@@ -65,6 +65,7 @@
   justify-content: center;
   align-items: center;
 
+
   @media screen and (min-width: 768px) {
     & {
       width: 108px;
@@ -76,6 +77,9 @@
       width: 108px;
     }
   }
+
+  cursor: pointer;
+
 }
 
 .team__image {
@@ -154,4 +158,12 @@
   .social__link:focus & {
     fill: $accent-color;
   }
+}
+
+.team__item:hover .first {
+  display: none;
+}
+
+.team__item:hover .second {
+  display: block;
 }

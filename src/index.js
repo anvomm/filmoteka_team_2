@@ -18,3 +18,7 @@ fetchTrendingMovies(1).then(data => {
 });
 
 import './js/pagination';
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
