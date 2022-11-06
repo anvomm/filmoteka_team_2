@@ -11,6 +11,10 @@ export default function refs() {
     notification: document.querySelector('.header__error-text'),
     pagination: document.querySelector('.pagination'),
     paginationLastPageBtn: document.querySelector('.last-page'),
+    paginationFirstPageBtn: document.querySelector('.first-page'),
+    paginationSecondPageBtn: document.querySelector('.second-page'),
+    paginationThirdPageBtn: document.querySelector('.third-page'),
+    paginationAllItems: document.querySelectorAll('.pagination li'),
     paginationArrowLeft: document.querySelector('.pagination__arrow_left'),
     paginationDotsLeft: document.querySelector('.pagination__dots_left'),
   };

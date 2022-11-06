@@ -10,7 +10,7 @@ import { stylizePaginationOnStart } from './js/pagination';
 fetchTrendingMovies(1).then(data => {
   if (data) {
     renderList(data.results);
-    stylizePaginationOnStart(data.total_pages);
+    stylizePaginationOnStart(10);
   }
 });
 
