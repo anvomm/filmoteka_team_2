@@ -3,7 +3,9 @@ import { fetchMovieByQuery } from './fetchMovies';
 import { fetchGenres } from './fetchMovies';
 import createMarkUp from '../templates/films-card.hbs';
 
+
 const refs = refsList();
+refs.notification.textContent = '';
 
 // if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
 
@@ -56,17 +58,25 @@ export async function onSubmitForm(event) {
       refs.filmsList.insertAdjacentHTML('beforeend', markup);
       loader.off();
     }
-  }
 
-  refs.formInput.value = '';
+      
+    //   refs.notification.textContent = ''
 
-  if (movies.length === 0) {
-    refs.notification.classList.add('off');
-    setTimeout(() => {
-      refs.notification.classList.remove('off');
-    });
-    return;
-  }
+}
+
+
+    refs.formInput.value = '';
+    
+   
+    if (movies.length === 0) {
+        refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
+        setTimeout(() => {
+            refs.notification.textContent = '';
+        }, 2000);
+        return;
+    }
+
+    
 
   renderList(movies);
   //   вызываем функцию рисования разметки
