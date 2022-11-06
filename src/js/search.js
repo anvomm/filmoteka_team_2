@@ -5,9 +5,7 @@ import { renderList } from './renderFilmList.js';
 
 const refs = refsList();
 
-
-
-refs.form.addEventListener('submit', onSubmitForm);
+if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
 
 
 
