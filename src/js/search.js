@@ -6,7 +6,9 @@ import createMarkUp from '../templates/films-card.hbs';
 import { renderList } from './renderFilmList';
 
 
+
 const refs = refsList();
+refs.notification.textContent = '';
 
 // if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
 
@@ -24,6 +26,8 @@ export async function onSubmitForm(event) {
 
   const response = await fetchMovieByQuery(query, page);
     const movies = await response.results;
+
+    
 
 //    function renderList(data) {
 //       refs.filmsList.innerHTML = '';
@@ -57,19 +61,23 @@ export async function onSubmitForm(event) {
     if (refs.filmsList) {
       refs.filmsList.insertAdjacentHTML('beforeend', markup);
     }
+      
+    //   refs.notification.textContent = ''
+
+}
+
+    refs.formInput.value = '';
+    
+   
+    if (movies.length === 0) {
+        refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
+        setTimeout(() => {
+            refs.notification.textContent = '';
+        }, 2000);
+        return;
+    }
 
     
-  }
-
-  refs.formInput.value = '';
-
-  if (movies.length === 0) {
-    refs.notification.classList.add('off');
-    setTimeout(() => {
-      refs.notification.classList.remove('off');
-    });
-    return;
-  }
 
   renderList(movies);
   //   вызываем функцию рисования разметки
