@@ -1,7 +1,18 @@
+.team-close {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .team__container {
-  min-height: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 600px;
   padding: 30px;
   margin: auto;
+  background-color: $white-color;
 
   @media screen and (min-width: 768px) {
     width: 900px;

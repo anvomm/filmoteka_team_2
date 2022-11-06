@@ -2,11 +2,9 @@ import './js/modal';
 import './js/uptop';
 import './js/loader';
 import './js/search';
-
-
-
 import './js/themeSwitcher';
 import './js/localStorage';
+import './js/team';
 
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';

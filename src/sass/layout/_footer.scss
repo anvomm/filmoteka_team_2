@@ -28,11 +28,9 @@
 
 .footer__text {
   color: $footer-text-color;
-  font-family: Roboto, sans-serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 1.17;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

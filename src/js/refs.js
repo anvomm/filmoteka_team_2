@@ -22,6 +22,8 @@ export default function refs() {
     switch: document.querySelector('.switch'),
     body: document.querySelector('body'),
     modalTmp: document.querySelector('.modal .modal-content'),
-
+    teamOpen: document.querySelector('.footer__link'),
+    team: document.querySelector('.backdrop_team'),
+    html: document.querySelector('html'),
   };
 }
