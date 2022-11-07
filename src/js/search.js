@@ -66,14 +66,17 @@ export async function onSubmitForm(event) {
   refs.formInput.value = '';
 
   if (movies.length === 0) {
+    loader.off();
     refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
     refs.notification.style.color = '#ff001b';
+    renderList(movies);
     setTimeout(() => {
       refs.notification.textContent = '';
     }, 2000);
     return;
   }
 
-  renderList(movies);
   //   вызываем функцию рисования разметки
+  renderList(movies);
+  loader.off();
 }
