@@ -26,6 +26,7 @@ const KEY__QUEUE = 'queue';
 localStorage.setItem(KEY__WATCHED, JSON.stringify(watched)); //убрать
 localStorage.setItem(KEY__QUEUE, JSON.stringify(queue)); //убрать
 let watchedMovies;
+let queueMovies;
 
 libraryMainPage();
 
