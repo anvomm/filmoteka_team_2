@@ -21,7 +21,8 @@
 .header-library__btn-item:not(:last-child) {
   margin-right: 20px;
 }
-.header-library__btn {
+.header-library__btn-watched,
+.header-library__btn-queue {
   width: 130px;
   padding-top: 14px;
   padding-bottom: 12px;
