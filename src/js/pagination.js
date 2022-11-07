@@ -6,8 +6,8 @@ import { renderList } from './renderFilmList';
 import refsList from './refs';
 const refs = refsList();
 
-let clickedPageNumber;
-
+let pageToFetch;
+//let lastPageNumber = 15; //data.total_pages
 export function stylizePaginationOnStart(firstPageNumber, lastPageNumber) {
   stylizePaginationPageOne(firstPageNumber);
   refs.paginationFirstPageBtn.classList.add('pagination__item_current');
@@ -26,59 +26,78 @@ function stylizePaginationPageOne(firstPageNumber) {
   refs.paginationEighthPageBtn.textContent = '...';
 }
 
-const doWhenPageIsClicked = kakoitoevent => {
-  //clickedPageNumber = Number(kakoitoevent.target.textContent);
-  console.log(kakoitoevent.target);
+const doWhenPageIsClicked = event => {
+  //console.log(event.target);
+  //проверяем на какой элемент в пагинации кликнули, записываем данные в pageToFetch
+  if (event.target.classList.contains('pagination__item')) {
+    pageToFetch = Number(event.target.textContent);
+  }
+  if (
+    event.target.classList.contains('pagination__arrow_left') ||
+    event.target.classList.contains('test1') ||
+    event.target.classList.contains('test2')
+  ) {
+    console.log('popali po item so strelkoi');
+    pageToFetch = pageToFetch - 1;
+  }
+  if (
+    event.target.classList.contains('pagination__arrow_right') ||
+    event.target.classList.contains('test-icon-arrow-right') ||
+    event.target.classList.contains('test-vector-arrow-right')
+  ) {
+    console.log('popali po item so strelkoi');
+    pageToFetch = pageToFetch + 1;
+  }
 
-  if (kakoitoevent.target.classList.contains('pagination__item')) {
-    console.log('popali po cifre');
-    clickedPageNumber = Number(kakoitoevent.target.textContent);
-  }
-  if (kakoitoevent.target.classList.contains('pagination__arrow_left')) {
-    console.log('popali po item so strelkoi');
-    clickedPageNumber = clickedPageNumber - 1;
-  }
-  if (kakoitoevent.target.classList.contains('pagination__arrow_right')) {
-    console.log('popali po item so strelkoi');
-    clickedPageNumber = clickedPageNumber + 1;
-  }
-  //console.log(kakoitoevent.target);
-  //console.log(kakoitoevent.target.classList.contains('pagination__arrow_left'));
-  // if (kakoitoevent.target.classList.contains('pagination__arrow_left')) {
-  //   console.log('fjifiewfuh');
-  //   refs.paginationAllItems.forEach(lishka => {
-  //     if (lishka.classList.contains('pagination__item_current')) {
-  //       const pageNumberBwforeArrowClick = Number(lishka.textContent);
-  //       console.log(
-  //         `до того как кликнули на стрелочку была акивна страница номер ${pageNumberBwforeArrowClick}`
-  //       );
-  //       // а страница, которую мы должны получить с бека(clickedPageNumber) на 1 меньше
-  //       clickedPageNumber = pageNumberBwforeArrowClick - 1
-  //       console.log(clickedPageNumber)
-  //     }
-  //   })
-  fetchTrendingMovies(clickedPageNumber).then(data => {
+  fetchTrendingMovies(pageToFetch).then(data => {
     refs.filmsList.innerHTML = '';
     renderList(data.results);
 
-    let lastPageNumber = 15; //data.total_pages
+    let lastPageNumber = data.total_pages; //data.total_pages
 
-    if (clickedPageNumber === 1) {
-      stylizePaginationPageOne(clickedPageNumber);
-      toggleClassCurrent(kakoitoevent);
-      // console.log(`hello, ты кликнул на`);
-      // console.log(kakoitoevent.target);
+    if (pageToFetch === 1) {
+      stylizePaginationPageOne(pageToFetch);
+      removeClassCurrent();
+      refs.paginationAllItems.forEach(item => {
+        if (Number(item.textContent) === pageToFetch) {
+          item.classList.add('pagination__item_current');
+        }
+      });
     }
 
-    if (clickedPageNumber >= 2 && clickedPageNumber <= 4) {
-      toggleClassCurrent(kakoitoevent);
+    if (pageToFetch >= 2 && pageToFetch <= 4) {
+      //toggleClassCurrent(event);
+      //console.log(event.target);
+      removeClassCurrent();
+      //и надо добавить класс pagination__item_current
+      //когда кликаю на стрелки и перемещаюсь между страницами 1, 2, 3, 4
+      // event.target.classList.add('pagination__item_current'); //вешает класс при клике на цифру
+      // и если кликнуть по стрелке, то класс карент на стрелку вешается
+
+      // искать тот, у которого textContent равно твоему этому page,
+      //который в глобальной области для запроса
+      refs.paginationAllItems.forEach(item => {
+        if (Number(item.textContent) === pageToFetch) {
+          item.classList.add('pagination__item_current');
+        }
+      });
       refs.paginationArrowLeft.classList.remove('visually-hidden');
       refs.paginationSecondPageBtn.textContent = '2';
-      // console.log(`hello, ты кликнул на`);
-      // console.log(kakoitoevent.target);
     }
-
-    if (clickedPageNumber >= 5 && clickedPageNumber < lastPageNumber - 4) {
+    if (pageToFetch === 5) {
+      // console.log(555);
+      // refs.paginationArrowLeft.classList.remove('visually-hidden');
+      // refs.paginationArrowRight.classList.remove('visually-hidden');
+      refs.paginationSecondPageBtn.textContent = '2';
+      // refs.paginationEighthPageBtn.textContent = '...';
+      removeClassCurrent();
+      refs.paginationAllItems.forEach(item => {
+        if (Number(item.textContent) === pageToFetch) {
+          item.classList.add('pagination__item_current');
+        }
+      });
+    }
+    if (pageToFetch >= 5 && pageToFetch < lastPageNumber - 4) {
       refs.paginationArrowLeft.classList.remove('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
       refs.paginationSecondPageBtn.textContent = '...';
@@ -87,14 +106,14 @@ const doWhenPageIsClicked = kakoitoevent => {
       removeClassCurrent();
       refs.paginationMiddlePageBtn.classList.add('pagination__item_current');
 
-      refs.paginationMiddlePageBtn.textContent = clickedPageNumber;
-      refs.paginationFourPageBtn.textContent = clickedPageNumber - 1;
-      refs.paginationThirdPageBtn.textContent = clickedPageNumber - 2;
-      refs.paginationSixPageBtn.textContent = clickedPageNumber + 1;
-      refs.paginationSevenPageBtn.textContent = clickedPageNumber + 2;
+      refs.paginationMiddlePageBtn.textContent = pageToFetch;
+      refs.paginationFourPageBtn.textContent = pageToFetch - 1;
+      refs.paginationThirdPageBtn.textContent = pageToFetch - 2;
+      refs.paginationSixPageBtn.textContent = pageToFetch + 1;
+      refs.paginationSevenPageBtn.textContent = pageToFetch + 2;
 
       // console.log(`hello, ты кликнул на`);
-      // console.log(kakoitoevent.target);
+      // console.log(event.target);
       // console.log('but el.with class current-page is');
 
       // refs.paginationAllItems.forEach(item => {
@@ -104,41 +123,41 @@ const doWhenPageIsClicked = kakoitoevent => {
       // });
     }
 
-    if (clickedPageNumber === lastPageNumber - 4) {
+    if (pageToFetch === lastPageNumber - 4) {
       removeClassCurrent();
       refs.paginationMiddlePageBtn.classList.add('pagination__item_current');
-      refs.paginationMiddlePageBtn.textContent = clickedPageNumber;
-      refs.paginationThirdPageBtn.textContent = clickedPageNumber - 2;
-      refs.paginationFourPageBtn.textContent = clickedPageNumber - 1;
+      refs.paginationMiddlePageBtn.textContent = pageToFetch;
+      refs.paginationThirdPageBtn.textContent = pageToFetch - 2;
+      refs.paginationFourPageBtn.textContent = pageToFetch - 1;
       refs.paginationSixPageBtn.textContent = lastPageNumber - 3;
       refs.paginationSevenPageBtn.textContent = lastPageNumber - 2;
       refs.paginationEighthPageBtn.textContent = lastPageNumber - 1;
     }
 
-    if (clickedPageNumber === lastPageNumber - 3) {
+    if (pageToFetch === lastPageNumber - 3) {
       removeClassCurrent();
       refs.paginationSixPageBtn.classList.add('pagination__item_current');
       refs.paginationArrowRight.classList.remove('visually-hidden');
     }
 
-    if (clickedPageNumber === lastPageNumber - 2) {
-      console.log(clickedPageNumber);
+    if (pageToFetch === lastPageNumber - 2) {
+      console.log(pageToFetch);
 
       removeClassCurrent();
       refs.paginationSevenPageBtn.classList.add('pagination__item_current');
       refs.paginationArrowRight.classList.remove('visually-hidden');
     }
 
-    if (clickedPageNumber === lastPageNumber - 1) {
-      console.log(clickedPageNumber);
+    if (pageToFetch === lastPageNumber - 1) {
+      console.log(pageToFetch);
 
       removeClassCurrent();
       refs.paginationEighthPageBtn.classList.add('pagination__item_current');
       refs.paginationArrowRight.classList.remove('visually-hidden');
     }
 
-    if (clickedPageNumber === lastPageNumber) {
-      console.log(clickedPageNumber);
+    if (pageToFetch === lastPageNumber) {
+      console.log(pageToFetch);
 
       removeClassCurrent();
       refs.paginationLastPageBtn.classList.add('pagination__item_current');
@@ -153,23 +172,7 @@ const doWhenPageIsClicked = kakoitoevent => {
       refs.paginationSecondPageBtn.textContent = '...';
     }
 
-    if (clickedPageNumber === 5) {
-      refs.paginationSecondPageBtn.textContent = '2';
-    }
     //если клик на стрелку Влево
-    // if (kakoitoevent.target.classList.contains('pagination__arrow_left')) {
-    //   //console.log(23);
-    //   refs.paginationAllItems.forEach(lishka => {
-    //     if (lishka.classList.contains('pagination__item_current')) {
-    //       const pageNumberBwforeArrowClick = Number(lishka.textContent);
-    //       // console.log(
-    //       //   `до того как кликнули на стрелочку была акивна страница номер ${pageNumberBwforeArrowClick}`
-    //       // );
-    //       //а страница, которую мы должны получить с бека на 1 меньше
-    //       return (clickedPageNumber = pageNumberBwforeArrowClick - 1);
-    //     }
-    //   });
-    // }
   });
 };
 
@@ -193,30 +196,30 @@ function removeClassCurrent() {
   });
 }
 
-const doWhenArrowLeftClicked = eventPriClikeNaLeftArrow => {
-  console.log('you have pressed on arrowleft');
+// const doWhenArrowLeftClicked = eventPriClikeNaLeftArrow => {
+//   console.log('you have pressed on arrowleft');
 
-  refs.pagination.removeEventListener('click', doWhenPageIsClicked);
-  refs.paginationAllItems.forEach(lishka => {
-    if (lishka.classList.contains('pagination__item_current')) {
-      const pageNumberBwforeArrowClick = Number(lishka.textContent);
-      console.log(
-        `до того как кликнули на стрелочку была акивна страница номер ${pageNumberBwforeArrowClick}`
-      );
-      //а страница, которую мы должны получить с бека на 1 меньше
-      fetchTrendingMovies(pageNumberBwforeArrowClick - 1).then(data => {
-        refs.filmsList.innerHTML = '';
-        renderList(data.results);
+//   refs.pagination.removeEventListener('click', doWhenPageIsClicked);
+//   refs.paginationAllItems.forEach(lishka => {
+//     if (lishka.classList.contains('pagination__item_current')) {
+//       const pageNumberBwforeArrowClick = Number(lishka.textContent);
+//       console.log(
+//         `до того как кликнули на стрелочку была акивна страница номер ${pageNumberBwforeArrowClick}`
+//       );
+//       //а страница, которую мы должны получить с бека на 1 меньше
+//       fetchTrendingMovies(pageNumberBwforeArrowClick - 1).then(data => {
+//         refs.filmsList.innerHTML = '';
+//         renderList(data.results);
 
-        if (pageNumberBwforeArrowClick === 2) {
-          stylizePaginationPageOne(1);
-          removeClassCurrent();
-          refs.paginationFirstPageBtn.classList.add('pagination__item_current');
-        }
-        if (pageNumberBwforeArrowClick === 3) {
-        }
-      });
-    }
-  });
-};
+//         if (pageNumberBwforeArrowClick === 2) {
+//           stylizePaginationPageOne(1);
+//           removeClassCurrent();
+//           refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+//         }
+//         if (pageNumberBwforeArrowClick === 3) {
+//         }
+//       });
+//     }
+//   });
+// };
 // refs.paginationArrowLeft.addEventListener('click', doWhenArrowLeftClicked);
