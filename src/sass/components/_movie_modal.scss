@@ -24,7 +24,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .modal {
     max-width: 806px;
     height: 558px;
@@ -122,6 +122,7 @@
 
 .modal-btn-close-icon {
   fill: #000000;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   .modal-btn-close:hover &,
   .modal-btn-close:focus & {
@@ -159,7 +160,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .film-card {
+  .modal__wrap {
     display: flex;
   }
 

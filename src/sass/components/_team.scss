@@ -1,0 +1,196 @@
+.team-close {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.team__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  border-radius: 5px;
+  margin: auto;
+  background-color: $white-color;
+
+  @media screen and (max-width: 359px) {
+    overflow-y: scroll;
+    height: 100vh;
+    width: 250px;
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    overflow-y: scroll;
+    height: 100vh;
+    width: 320px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 770px;
+    height: 620px;
+  }
+}
+
+.goit__wrapper {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    & {
+      display: flex;
+    }
+  }
+}
+
+// card
+
+.team__logo {
+  height: 40px;
+  margin: 0px;
+
+  @media screen and (max-width: 767px) {
+    & {
+      margin: 30px auto;
+    }
+  }
+}
+
+.team__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px 35px;
+}
+
+.team__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    & {
+      width: 108px;
+    }
+  }
+}
+
+div.team__image {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+div.team__image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  /*За счет transition, добиваемся плавности эффекта*/
+  -moz-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  box-shadow: 0px 2px 7px rgba(34, 60, 80, 0.2);
+}
+.team__image img.image__second {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.team__image:hover img.image__second {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.team__image:hover img.image__first,
+.team__image img.image__first:hover {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+// .team__image {
+//   width: 100px;
+//   height: 100px;
+//   margin-bottom: 20px;
+//   display: inline-block;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+// }
+
+// .team__image__item.first,
+// .team__image__item.second {
+//   border-radius: 50%;
+//   margin: 0;
+//   padding: 0;
+//   box-shadow: 0px 2px 7px rgba(34, 60, 80, 0.2);
+// }
+
+// .team__image__item.first {
+//   opacity: 1px;
+//   display: block;
+//   position: absolute;
+//   z-index: 100;
+//   transition-duration: 0.96s;
+//   -webkit-transition-duration: 0.96s;
+//   -moz-transition-duration: 0.96s;
+//   -o-transition-duration: 0.96s;
+//   -ms-transition-duration: 0.96s;
+// }
+
+// .team__image__item.first:hover {
+//   opacity: 0;
+// }
+
+.team__name {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.15px;
+  margin-bottom: 20px;
+}
+
+.team__function {
+  text-align: center;
+  color: $accent-color;
+  font-size: 16px;
+  line-height: 1.1px;
+  margin-bottom: 15px;
+}
+
+// social
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.social__link {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  color: $main-color;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social__icon {
+  width: 20px;
+  height: 20px;
+  fill: $social-icon;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .social__link:hover & {
+    fill: $accent-color;
+  }
+}
+
+.team__item:hover .first {
+  display: none;
+}
+
+.team__item:hover .second {
+  display: block;
+}

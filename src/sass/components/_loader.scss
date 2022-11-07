@@ -1,0 +1,91 @@
+.loader {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translateX(-50%);
+  transform: translateZ(50%);
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+
+  /* @media screen and (min-width: 480px) {
+    left: 43%;
+  }
+
+  @media screen and (min-width: 640px) {
+    left: 44%;
+  }
+
+  @media screen and (min-width: 800px) {
+    left: 45%;
+  }
+
+  @media screen and (min-width: 960px) {
+    left: 46%;
+  }
+
+  @media screen and (min-width: 1160px) {
+    left: 47%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    left: 48%;
+  } */
+}
+
+.loader div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: $accent-color;
+  animation: loader 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.loader div:after,
+.loader div:before {
+  content: ' ';
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: $accent-color;
+}
+
+.loader div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+
+.loader div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+
+@keyframes loader {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.ldld {
+  color: $accent-color;
+}

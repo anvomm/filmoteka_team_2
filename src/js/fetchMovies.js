@@ -40,3 +40,15 @@ export async function fetchMovieById(id) {
     console.error(error);
   }
 }
+
+export async function fetchGenres() {
+  try {
+    const { data } = await axios.get(
+      `${BASE_URL}3/genre/movie/list?api_key=${API_KEY}`
+    );
+
+    return data.genres;
+  } catch (error) {
+    console.error(error);
+  }
+}
