@@ -4,9 +4,8 @@ import './js/uptop';
 import './js/search';
 import './js/themeSwitcher';
 import './js/localStorage';
-// import './js/library';
-import './js/team';
 import './js/library';
+import './js/team';
 
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
