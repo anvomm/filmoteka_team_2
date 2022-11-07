@@ -1,12 +1,14 @@
 import refsList from './refs';
-import createMarkUp from '../templates/films-card.hbs';
-import { onOpenModal } from './modal';
 import { fetchMovieById } from './fetchMovies';
 import { renderList } from './renderFilmList';
-import { fetchGenres } from './fetchMovies';
 
-const BASE_URL = 'https://api.themoviedb.org/';
-const API_KEY = 'd929b7a4b435aa22496bb0793b172bfc';
+// import createMarkUp from '../templates/films-card.hbs';
+// import { onOpenModal } from './modal';
+// import { fetchGenres } from './fetchMovies';
+
+// const BASE_URL = 'https://api.themoviedb.org/';
+// const API_KEY = 'd929b7a4b435aa22496bb0793b172bfc';
+
 const refs = refsList();
 
 refs.libraryWatchedBtn.addEventListener('click', onWatchedBtn);
