@@ -9,6 +9,8 @@ export default function refs() {
     form: document.querySelector('.header__search-form'),
     formInput: document.querySelector('.header__search-input'),
     notification: document.querySelector('.header__error-text'),
+    libraryWatchedBtn: document.querySelector('.header-library__btn-watched'),
+    libraryQueueBtn: document.querySelector('.header-library__btn-queue'),
     pagination: document.querySelector('.pagination'),
     paginationLastPageBtn: document.querySelector('.last-page'),
     paginationFirstPageBtn: document.querySelector('.first-page'),
