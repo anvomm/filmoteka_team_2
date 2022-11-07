@@ -22,7 +22,7 @@ export default function refs() {
     paginationSevenPageBtn: document.querySelector('.seventh-item'),
     paginationEighthPageBtn: document.querySelector('.eighth-item'),
     paginationLastPageBtn: document.querySelector('.last-item'),
-    paginationAllItems: document.querySelectorAll('.pagination li'),
+    paginationAllItems: document.querySelectorAll('.pagination__item'),
     paginationArrowRight: document.querySelector('.pagination__arrow_right'),
     lampadario: document.querySelector('#lampadario'),
     switch: document.querySelector('.switch'),
