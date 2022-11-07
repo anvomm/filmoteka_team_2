@@ -1,7 +1,7 @@
 {
   "name": "filmoteka_team_2",
   "version": "2.0.0",
-  "description": "",
+  "description": "This project was created with Parcel. For familiarization and setting additional features [refer to documentation](https://parceljs.org/).",
   "homepage": "https://anvomm.github.io/filmoteka_team_2",
   "scripts": {
     "start": "parcel src/*.html",
@@ -32,5 +32,6 @@
     "posthtml-include": "^1.7.4",
     "process": "^0.11.10"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "main": "index.js"
 }
