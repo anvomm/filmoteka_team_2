@@ -46,7 +46,7 @@ function renderWatchedMoviesList() {
 }
 
 function renderQueueMoviesList() {
-      try {
+  try {
     const watchedMovies = JSON.parse(localStorage.getItem(queue));
   } catch (error) {
     console.log(error.name);
