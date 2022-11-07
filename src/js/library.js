@@ -71,7 +71,7 @@ function defaultPageShow() {
       refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
     }
 
-    refs.filmsElements.forEach(card =>
+    refsList().filmsElements.forEach(card =>
       card.addEventListener('click', onOpenModal)
     );
   }
@@ -130,6 +130,7 @@ async function renderWatchedMoviesList() {
   return movies;
 }
 function renderWatchedCards(movies) {
+  console.log(movies);
   const genres = movies.map(movie => movie.genres.map(genre => genre.name));
   movies.map((movie, i) => (movie.genre_ids = genres[i].join(', ')));
 
@@ -138,7 +139,7 @@ function renderWatchedCards(movies) {
   if (refs.libraryMoviesList)
     refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
 
-  refs.filmsElements.forEach(card =>
+  refsList().filmsElements.forEach(card =>
     card.addEventListener('click', onOpenModal)
   );
 }
@@ -187,43 +188,3 @@ async function renderQueueMoviesList() {
   return movies;
 }
 
-/* const markup = watchedMovies.map(movieId =>
-    fetchMovieById(movieId)
-      .then(resp => {
-        return createMarkUp(resp);
-      })
-      .then(
-        refs.libraryMoviesList.insertAdjacentHTML('beforeend', arr.join(''))
-      )
-  ); */
-/*  console.log(markup); */
-/* .join('');
-  
-  refs.libraryMoviesList.innerHTML = '';
-  refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup); */
-
-/* const markup = watchedMovies
-    .map(id => {
-      return fetchMovieById(id);
-    })
-    .join('');
-
-  renderList(markup); */
-
-/* function renderQueueMoviesList() {
-  try {
-    const watchedMovies = JSON.parse(localStorage.getItem(queue));
-  } catch (error) {
-    console.log(error.name);
-    console.log(error.message);
-  }
-
-  const markup = watchedMovies
-    .map(id => {
-      console.log(id);
-      return fetchMovieById(id);
-    })
-    .join('');
-
-  renderList(markup);
-}*/
