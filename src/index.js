@@ -6,6 +6,7 @@ import './js/themeSwitcher';
 import './js/localStorage';
 // import './js/library';
 import './js/team';
+import './js/library';
 
 import { fetchTrendingMovies } from './js/fetchMovies';
 import { renderList } from './js/renderFilmList';
@@ -16,7 +17,9 @@ let page = 1;
 fetchTrendingMovies(page).then(data => {
   if (data) {
     renderList(data.results);
-    stylizePaginationOnStart(10);
+    //console.log(data.page);
+    //console.log(data.total_pages);
+    stylizePaginationOnStart(data.page, 15); //data.page, data.total_pages
   }
 });
 

@@ -4,6 +4,7 @@ import { fetchGenres } from './fetchMovies';
 import createMarkUp from '../templates/films-card.hbs';
 
 const refs = refsList();
+if (refs.notification) refs.notification.textContent = '';
 
 // if (refs.form) refs.form.addEventListener('submit', onSubmitForm);
 
@@ -56,15 +57,20 @@ export async function onSubmitForm(event) {
       refs.filmsList.insertAdjacentHTML('beforeend', markup);
       loader.off();
     }
+
+    //   refs.notification.textContent = ''
   }
 
+  refs.notification.textContent = `Wow! We found ${response.total_results} results on request "${query}"!`;
+  refs.notification.style.color = '#818181';
   refs.formInput.value = '';
 
   if (movies.length === 0) {
-    refs.notification.classList.add('off');
+    refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
+    refs.notification.style.color = '#ff001b';
     setTimeout(() => {
-      refs.notification.classList.remove('off');
-    });
+      refs.notification.textContent = '';
+    }, 2000);
     return;
   }
 
