@@ -4,7 +4,6 @@
 import { fetchTrendingMovies } from './fetchMovies';
 import { renderList } from './renderFilmList';
 import refsList from './refs';
-
 const refs = refsList();
 
 let clickedPageNumber;
@@ -12,7 +11,6 @@ let clickedPageNumber;
 export function stylizePaginationOnStart(firstPageNumber, lastPageNumber) {
   stylizePaginationPageOne(firstPageNumber);
   refs.paginationFirstPageBtn.classList.add('pagination__item_current');
-
   refs.paginationLastPageBtn.textContent = lastPageNumber;
 }
 
@@ -39,6 +37,10 @@ const doWhenPageIsClicked = kakoitoevent => {
   if (kakoitoevent.target.classList.contains('pagination__arrow_left')) {
     console.log('popali po item so strelkoi');
     clickedPageNumber = clickedPageNumber - 1;
+  }
+  if (kakoitoevent.target.classList.contains('pagination__arrow_right')) {
+    console.log('popali po item so strelkoi');
+    clickedPageNumber = clickedPageNumber + 1;
   }
   //console.log(kakoitoevent.target);
   //console.log(kakoitoevent.target.classList.contains('pagination__arrow_left'));
