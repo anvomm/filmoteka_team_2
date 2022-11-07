@@ -51,6 +51,7 @@ const doWhenPageIsClicked = event => {
 
   fetchTrendingMovies(pageToFetch).then(data => {
     refs.filmsList.innerHTML = '';
+
     renderList(data.results);
 
     let lastPageNumber = data.total_pages; //data.total_pages

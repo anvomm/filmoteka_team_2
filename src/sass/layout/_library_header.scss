@@ -2,6 +2,9 @@
   padding-top: 44px;
   padding-bottom: 65px;
   background-image: url(../images/header-my-library/header-my-library-mobile.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @media (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
@@ -21,7 +24,8 @@
 .header-library__btn-item:not(:last-child) {
   margin-right: 20px;
 }
-.header-library__btn {
+.header-library__btn-watched,
+.header-library__btn-queue {
   width: 130px;
   padding-top: 14px;
   padding-bottom: 12px;

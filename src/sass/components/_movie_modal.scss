@@ -14,21 +14,30 @@
     padding: 48px 20px 40px 20px;
     overflow-y: scroll;
   }
+  .modal-card__img {
+    height: 356px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .modal {
-    max-width: 704px;
-    height: 552px;
-    padding: 40px 72px 40px 36px;
+    max-width: 618px;
+    height: 562px;
+    padding: 40px 30px;
+  }
+  .modal-card__img {
+    height: 373px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .modal {
-    max-width: 806px;
-    height: 558px;
-    padding: 40px 12px;
+    max-width: 882px;
+    height: 568px;
+    padding: 50px 30px 40px 30px;
+  }
+  .modal-card__img {
+    height: 477px;
   }
 }
 
@@ -80,12 +89,12 @@
   color: #000;
 
   &:not(:last-child) {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 }
 
 .film-card-content__item-text-left:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .film-card-content__title {
@@ -159,13 +168,18 @@
 }
 
 @media screen and (min-width: 768px) {
+  .film-card,
   .modal__wrap {
     display: flex;
   }
 
   .film-card-content {
-    margin-left: 68px;
-    max-width: 265px;
+    margin-left: 30px;
+    max-width: 264px;
+  }
+
+  .picture {
+    flex-grow: 1;
   }
 
   .film-card-btn {
@@ -178,10 +192,10 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .film-card-content {
-    margin-left: 16px;
-    max-width: 391px;
+    margin-left: 30px;
+    max-width: 396px;
   }
 
   .film-card-content__title {
@@ -197,4 +211,13 @@
     width: 136px;
     padding: 14px 10px 12px 10px;
   }
+}
+
+.disable-scroll {
+  position: fixed;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
