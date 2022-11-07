@@ -1,13 +1,17 @@
-import createMarkUp from '../templates/films-card.hbs';
+import createMarkUp from '../templates/library-default.hbs';
 import refsList from './refs';
-import { fetchGenres } from './fetchMovies';
+import { fetchTrendingMovies, fetchGenres } from './fetchMovies';
 import { onOpenModal } from './modal';
 
 const refs = refsList();
 
+fetchTrendingMovies(3).then(data => {
+  if (data) {
+    renderList(data.results);
+  }
+});
+
 export async function renderList(data) {
-  const loader = new ldLoader({ root: '.ldld.full' });
-  loader.on();
   const genersList = await fetchGenres();
   data.forEach(el => {
     const newArr = [];
@@ -27,13 +31,14 @@ export async function renderList(data) {
     .map(film => {
       return createMarkUp(film);
     })
+    .slice(0, 6)
     .join('');
-  if (refs.filmsList) {
-    refs.filmsList.insertAdjacentHTML('beforeend', markup);
+
+  if (refs.libraryMoviesList) {
+    refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
   }
 
   refsList().filmsElements.forEach(card =>
     card.addEventListener('click', onOpenModal)
   );
-  loader.off();
 }
