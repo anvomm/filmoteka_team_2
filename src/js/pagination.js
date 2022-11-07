@@ -28,7 +28,6 @@ refs.pagination.addEventListener('click', event => {
   //console.log(clickedPageNumber);
   fetchTrendingMovies(clickedPageNumber).then(data => {
     //console.log(data);
-    refs.filmsList.innerHTML = '';
     renderList(data.results);
 
     //console.log(data);
