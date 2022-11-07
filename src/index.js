@@ -16,7 +16,9 @@ let page = 1;
 fetchTrendingMovies(page).then(data => {
   if (data) {
     renderList(data.results);
-    stylizePaginationOnStart(10);
+    //console.log(data.page);
+    //console.log(data.total_pages);
+    stylizePaginationOnStart(data.page, 15); //data.page, data.total_pages
   }
 });
 
