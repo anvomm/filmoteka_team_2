@@ -1,88 +1,7 @@
 import { defaultPageShow } from './library';
 import refsList from './refs';
 import createMarkUp from '../templates/films-card.hbs';
-import { onOpenModal } from './modal';
-
-const watched = [
-  /*   {
-    poster_path: '/wdbiMjXd4CxPfCx4r4Jfy8cGec0.jpg',
-    id: '11111',
-    title: 'My policeman',
-    vote_average: '8.249',
-    vote_count: '177',
-    popularity: '290.839',
-    overview:
-      'In the late 1990s, the arrival of elderly invalid Patrick into Marion and Tom’s home triggers the exploration of seismic events from 40 years previous: the passionate relationship between Tom and Patrick at a time when homosexuality was illegal.',
-    genre_ids: 'Drama, Romance',
-    release_date: '2022-11-04',
-  },
-
-  {
-    poster_path: '/wdbiMjXd4CxPfCx4r4Jfy8cGec0.jpg',
-    id: '2222',
-    title: 'My policeman',
-    vote_average: '8.249',
-    vote_count: '177',
-    popularity: '290.839',
-    overview:
-      'In the late 1990s, the arrival of elderly invalid Patrick into Marion and Tom’s home triggers the exploration of seismic events from 40 years previous: the passionate relationship between Tom and Patrick at a time when homosexuality was illegal.',
-    genre_ids: 'Drama, Romance',
-    release_date: '2022-11-04',
-  },
-
-  {
-    poster_path: document.querySelector('.modal-card__img').src.slice(31),
-    id: document.querySelector('.modal-card__img').dataset.id,
-    title: document.querySelector('.film-card-content__title').textContent,
-    vote_average: document.querySelector('.rating').textContent,
-    genre_ids: document.querySelector('.film-card-content__item-text-right').textContent,
-    release_date: document.querySelector('.film-card-content__title').dataset.date,
-  }, */
-];
-const phrase =
-  'https://image.tmdb.org/t/p/w500/wdbiMjXd4CxPfCx4r4Jfy8cGec0.jpg';
-console.log(phrase.slice(31));
-
-const queue = [
-  {
-    poster_path: '/5EB9LAzIePTQoMpg2M1GNJpNn9s.jpg',
-    id: '11111',
-    title: 'King Lines',
-    vote_average: '8.249',
-    vote_count: '177',
-    popularity: '290.839',
-    overview:
-      'In the late 1990s, the arrival of elderly invalid Patrick into Marion and Tom’s home triggers the exploration of seismic events from 40 years previous: the passionate relationship between Tom and Patrick at a time when homosexuality was illegal.',
-    genre_ids: 'Adventure, Documentary',
-    release_date: '2022-11-04',
-  },
-
-  {
-    poster_path: '/9nAWnMNvFrhSmytB2VLw3OR7BJ3.jpg',
-    id: '2222',
-    title: 'Christine',
-    vote_average: '8.249',
-    vote_count: '177',
-    popularity: '290.839',
-    overview:
-      'In the late 1990s, the arrival of elderly invalid Patrick into Marion and Tom’s home triggers the exploration of seismic events from 40 years previous: the passionate relationship between Tom and Patrick at a time when homosexuality was illegal.',
-    genre_ids: 'Drama',
-    release_date: '2022-11-04',
-  },
-
-  {
-    poster_path: '/8PT4sAcneQ7MtZ1Mqoe2EyOJHmZ.jpg',
-    id: '2323',
-    title: 'Field of Dreams',
-    vote_average: '8.249',
-    vote_count: '177',
-    popularity: '290.839',
-    overview:
-      'In the late 1990s, the arrival of elderly invalid Patrick into Marion and Tom’s home triggers the exploration of seismic events from 40 years previous: the passionate relationship between Tom and Patrick at a time when homosexuality was illegal.',
-    genre_ids: 'Drama, Romance',
-    release_date: '2022-11-04',
-  },
-];
+import { modalConnection } from './modalConnection';
 
 const refs = refsList();
 
@@ -141,7 +60,7 @@ function onQueueBtn() {
   libraryQueuePageBuild();
 }
 
-function libraryMainPageBuild() {
+export function libraryMainPageBuild() {
   if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length !== 0) {
     const markup = JSON.parse(localStorage.getItem(KEY__WATCHED))
       .map(movie => createMarkUp(movie))
@@ -150,6 +69,7 @@ function libraryMainPageBuild() {
     if (refs.libraryMoviesList)
       refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
   }
+
   modalConnection();
 }
 
@@ -171,15 +91,8 @@ function defaultClean() {
     refs.libraryDefaultContainer.style.display = 'none';
 }
 
-function defaultContainerBuild() {
+export function defaultContainerBuild() {
   if (refs.libraryMoviesList) refs.libraryMoviesList.innerHTML = '';
   if (refs.libraryDefaultContainer)
     refs.libraryDefaultContainer.style.display = 'flex';
 }
-
-function modalConnection() {
-  refsList().filmsElements.forEach(card =>
-    card.addEventListener('click', onOpenModal)
-  );
-}
-

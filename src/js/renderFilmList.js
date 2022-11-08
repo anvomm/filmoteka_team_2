@@ -1,7 +1,7 @@
 import createMarkUp from '../templates/films-card.hbs';
 import refsList from './refs';
 import { fetchGenres } from './fetchMovies';
-import { onOpenModal } from './modal';
+import { modalConnection } from './modalConnection';
 
 const refs = refsList();
 
@@ -9,7 +9,7 @@ export async function renderList(data) {
   const loader = new ldLoader({ root: '.ldld.full' });
   loader.on();
   if (refs.filmsList && refs.filmsList.innerHTML) {
-    refs.filmsList.innerHTML = "";
+    refs.filmsList.innerHTML = '';
   }
   const genersList = await fetchGenres();
   data.forEach(el => {
@@ -35,8 +35,6 @@ export async function renderList(data) {
     refs.filmsList.insertAdjacentHTML('beforeend', markup);
   }
 
-  refsList().filmsElements.forEach(card =>
-    card.addEventListener('click', onOpenModal)
-  );
+  modalConnection();
   loader.off();
 }
