@@ -1,43 +1,46 @@
 .theme-switcher {
   color: rgba(255, 255, 255, 0.6);
-  background: rgba(66, 39, 71, 1);
-  background: -moz-linear-gradient(
-    top,
-    rgba(66, 39, 71, 1) 0%,
-    rgba(43, 25, 46, 1) 73%,
-    rgba(19, 11, 20, 1) 100%
-  );
-  background: -webkit-gradient(
-    left top,
-    left bottom,
-    color-stop(0%, rgba(66, 39, 71, 1)),
-    color-stop(73%, rgba(43, 25, 46, 1)),
-    color-stop(100%, rgba(19, 11, 20, 1))
-  );
-  background: -webkit-linear-gradient(
-    top,
-    rgba(66, 39, 71, 1) 0%,
-    rgba(43, 25, 46, 1) 73%,
-    rgba(19, 11, 20, 1) 100%
-  );
-  background: -o-linear-gradient(
-    top,
-    rgba(66, 39, 71, 1) 0%,
-    rgba(43, 25, 46, 1) 73%,
-    rgba(19, 11, 20, 1) 100%
-  );
-  background: -ms-linear-gradient(
-    top,
-    rgba(66, 39, 71, 1) 0%,
-    rgba(43, 25, 46, 1) 73%,
-    rgba(19, 11, 20, 1) 100%
-  );
-  background: linear-gradient(
-    to bottom,
-    rgba(66, 39, 71, 1) 0%,
-    rgba(43, 25, 46, 1) 73%,
-    rgba(19, 11, 20, 1) 100%
-  );
+  background: rgba(83, 71, 62, 1);
+
+  // Gradient
+
+  // background: -moz-linear-gradient(
+  //   top,
+  //   rgba(66, 39, 71, 1) 0%,
+  //   rgba(43, 25, 46, 1) 73%,
+  //   rgba(19, 11, 20, 1) 100%
+  // );
+  // background: -webkit-gradient(
+  //   left top,
+  //   left bottom,
+  //   color-stop(0%, rgba(66, 39, 71, 1)),
+  //   color-stop(73%, rgba(43, 25, 46, 1)),
+  //   color-stop(100%, rgba(19, 11, 20, 1))
+  // );
+  // background: -webkit-linear-gradient(
+  //   top,
+  //   rgba(66, 39, 71, 1) 0%,
+  //   rgba(43, 25, 46, 1) 73%,
+  //   rgba(19, 11, 20, 1) 100%
+  // );
+  // background: -o-linear-gradient(
+  //   top,
+  //   rgba(66, 39, 71, 1) 0%,
+  //   rgba(43, 25, 46, 1) 73%,
+  //   rgba(19, 11, 20, 1) 100%
+  // );
+  // background: -ms-linear-gradient(
+  //   top,
+  //   rgba(66, 39, 71, 1) 0%,
+  //   rgba(43, 25, 46, 1) 73%,
+  //   rgba(19, 11, 20, 1) 100%
+  // );
+  // background: linear-gradient(
+  //   to bottom,
+  //   rgba(66, 39, 71, 1) 0%,
+  //   rgba(43, 25, 46, 1) 73%,
+  //   rgba(19, 11, 20, 1) 100%
+  // );
 }
 
 #lampadario {
