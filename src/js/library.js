@@ -11,8 +11,10 @@ import { onOpenModal } from './modal';
 
 const refs = refsList();
 
-const watched = [
-  /* 807356, 414906 */
+/* defaultPageShow(); */
+
+/* const watched = [
+  807356, 414906
 ];
 const queue = [595586]; // пробный массив
 const KEY__WATCHED = 'watched';
@@ -20,18 +22,18 @@ const KEY__QUEUE = 'queue';
 localStorage.setItem(KEY__WATCHED, JSON.stringify(watched)); //убрать
 localStorage.setItem(KEY__QUEUE, JSON.stringify(queue)); //убрать
 let watchedMovies;
-let queueMovies;
+let queueMovies; */
 
-libraryMainPage();
+/* libraryMainPage(); */
 
-async function libraryMainPage() {
+/* async function libraryMainPage() {
   if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length !== 0) {
     const movies = await renderWatchedMoviesList();
     renderWatchedCards(movies);
   }
 }
-
-function defaultPageShow() {
+ */
+export function defaultPageShow() {
   fetchTrendingMovies(3).then(data => {
     if (data) {
       renderList(data.results);
@@ -70,16 +72,16 @@ function defaultPageShow() {
     );
   }
 }
-if (
+/* if (
   JSON.parse(!localStorage.getItem(KEY__WATCHED)) ||
   JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0
 ) {
   defaultPageShow();
-}
+} */
 
 // Wached -> queue button part
 
-if (refs.libraryWatchedBtn)
+/* if (refs.libraryWatchedBtn)
   refs.libraryWatchedBtn.addEventListener('click', onWatchedBtn);
 if (refs.libraryQueueBtn)
   refs.libraryQueueBtn.addEventListener('click', onQueueBtn);
@@ -185,3 +187,4 @@ async function renderQueueMoviesList() {
   const movies = await Promise.all(arrayOfPromises);
   return movies;
 }
+ */
