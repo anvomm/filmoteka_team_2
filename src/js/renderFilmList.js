@@ -23,7 +23,7 @@ export async function renderList(data) {
       newArr.splice(2, newArr.length - 2, 'Other');
     }
 
-    el.genre_ids = newArr.join(', ');
+    el.genre_ids = newArr.length ? newArr.join(', ') : 'Other gener';
   });
 
   const markup = data
