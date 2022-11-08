@@ -35,5 +35,7 @@ export default function refs() {
     teamModalCloseBtn: document.querySelector('.team__close-btn'),
     libraryMoviesList: document.querySelector('.library-movies'),
     libraryDefaultContainer: document.querySelector('.default-library-page'),
+    footer: document.querySelector('.footer'),
+    footerText: document.querySelectorAll('.footer__text'),
   };
 }

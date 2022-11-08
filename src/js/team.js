@@ -1,20 +1,22 @@
 import refsList from './refs';
+import { pagePositionOnOpen, pageContentOnClose } from './modal';
 
 const refs = refsList();
+const body = document.body;
 
 refs.teamOpen.addEventListener('click', onClickTeamOpen);
 
 function onClickTeamOpen() {
   refs.team.classList.remove('is-hidden');
 
+  pagePositionOnOpen();
   addListenersForClose();
 }
 
 function onCloseBtnClick() {
   refs.team.classList.add('is-hidden');
 
-  contentDismove();
-  removeAllListeners();
+  onClose();
 }
 
 function onEscClose(evt) {
@@ -22,8 +24,7 @@ function onEscClose(evt) {
     refs.team.classList.add('is-hidden');
   }
 
-  contentDismove();
-  removeAllListeners();
+  onClose();
 }
 
 function onBackdropClickClose(evt) {
@@ -31,8 +32,7 @@ function onBackdropClickClose(evt) {
 
   refs.team.classList.add('is-hidden');
 
-  contentDismove();
-  removeAllListeners();
+  onClose();
 }
 
 function addListenersForClose() {
@@ -45,4 +45,9 @@ function removeAllListeners() {
   refs.teamModalCloseBtn.removeEventListener('click', onCloseBtnClick);
   refs.team.removeEventListener('click', onBackdropClickClose);
   window.removeEventListener('keydown', onEscClose);
+}
+
+function onClose() {
+  removeAllListeners();
+  pageContentOnClose();
 }

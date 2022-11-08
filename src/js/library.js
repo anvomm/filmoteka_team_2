@@ -8,17 +8,13 @@ import {
   fetchMovieById,
 } from './fetchMovies';
 import { onOpenModal } from './modal';
-// import createMarkUp from '../templates/films-card.hbs';
-// import { onOpenModal } from './modal';
-// import { fetchGenres } from './fetchMovies';
-
-// const BASE_URL = 'https://api.themoviedb.org/';
-// const API_KEY = 'd929b7a4b435aa22496bb0793b172bfc';
 
 const refs = refsList();
 
-const watched = [
-  /* 807356, 414906 */
+/* defaultPageShow(); */
+
+/* const watched = [
+  807356, 414906
 ];
 const queue = [595586]; // пробный массив
 const KEY__WATCHED = 'watched';
@@ -26,18 +22,18 @@ const KEY__QUEUE = 'queue';
 localStorage.setItem(KEY__WATCHED, JSON.stringify(watched)); //убрать
 localStorage.setItem(KEY__QUEUE, JSON.stringify(queue)); //убрать
 let watchedMovies;
-let queueMovies;
+let queueMovies; */
 
-libraryMainPage();
+/* libraryMainPage(); */
 
-async function libraryMainPage() {
+/* async function libraryMainPage() {
   if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length !== 0) {
     const movies = await renderWatchedMoviesList();
     renderWatchedCards(movies);
   }
 }
-
-function defaultPageShow() {
+ */
+export function defaultPageShow() {
   fetchTrendingMovies(3).then(data => {
     if (data) {
       renderList(data.results);
@@ -76,16 +72,16 @@ function defaultPageShow() {
     );
   }
 }
-if (
+/* if (
   JSON.parse(!localStorage.getItem(KEY__WATCHED)) ||
   JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0
 ) {
   defaultPageShow();
-}
+} */
 
 // Wached -> queue button part
 
-if (refs.libraryWatchedBtn)
+/* if (refs.libraryWatchedBtn)
   refs.libraryWatchedBtn.addEventListener('click', onWatchedBtn);
 if (refs.libraryQueueBtn)
   refs.libraryQueueBtn.addEventListener('click', onQueueBtn);
@@ -93,9 +89,8 @@ if (refs.libraryQueueBtn)
 // WATCHED BTN
 
 async function onWatchedBtn() {
-  if (refs.libraryMoviesList) refs.libraryMoviesList.innerHTML = '';
-  if (refs.libraryDefaultContainer)
-    refs.libraryDefaultContainer.style.display = 'flex';
+  defaultContainerBuild();
+
   if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0) {
     defaultPageShow();
   }
@@ -150,6 +145,12 @@ function defaultClean() {
     refs.libraryDefaultContainer.style.display = 'none';
 }
 
+function defaultContainerBuild() {
+  if (refs.libraryMoviesList) refs.libraryMoviesList.innerHTML = '';
+  if (refs.libraryDefaultContainer)
+    refs.libraryDefaultContainer.style.display = 'flex';
+}
+
 // QUEUE BTN
 
 async function onQueueBtn() {
@@ -161,8 +162,7 @@ async function onQueueBtn() {
     !JSON.parse(localStorage.getItem(KEY__QUEUE)) ||
     JSON.parse(localStorage.getItem(KEY__QUEUE)).length === 0
   ) {
-    refs.libraryMoviesList.innerHTML = '';
-    refs.libraryDefaultContainer.style.display = 'flex';
+    defaultContainerBuild();
     defaultPageShow();
   }
   if (JSON.parse(localStorage.getItem(KEY__QUEUE)).length !== 0) {
@@ -187,4 +187,4 @@ async function renderQueueMoviesList() {
   const movies = await Promise.all(arrayOfPromises);
   return movies;
 }
-
+ */

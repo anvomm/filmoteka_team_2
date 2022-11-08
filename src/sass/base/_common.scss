@@ -34,8 +34,16 @@ a {
 
 body {
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .list {
   list-style: none;
+}
+
+.ldld {
+  color: $accent-color;
 }

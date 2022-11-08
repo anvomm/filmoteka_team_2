@@ -15,6 +15,7 @@ export async function onSubmitForm(event) {
   const page = 1;
 
   const query = refs.formInput.value.trim();
+  refs.pagination.style.display = 'flex';
   const loader = new ldLoader({ root: '.ldld.full' });
   loader.on();
 
@@ -29,6 +30,7 @@ export async function onSubmitForm(event) {
     loader.off();
     refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
     refs.notification.style.color = '#ff001b';
+    refs.pagination.style.display = 'none';
     renderList(movies);
     setTimeout(() => {
       refs.notification.textContent = '';
