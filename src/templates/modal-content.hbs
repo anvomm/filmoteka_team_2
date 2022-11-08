@@ -1,5 +1,5 @@
 <div class="modal__wrap">
-    <picture>
+    <picture class="picture">
         {{!-- <source srcset="./images/header-home/header-home-desktop.jpg" media="(min-width: 1200px)" type="image/webp"
             width="375" height="478" />
 
@@ -16,7 +16,7 @@
     </picture>
     <div class="film-card-content">
         <ul class="list film-card-content__list">
-            <h2 class="film-card-content__title">{{original_title}}</h2>
+            <h2 class="film-card-content__title" data-date='{{release_date}}'>{{original_title}}</h2>
             <li class="film-card-content__list-item">
                 <div>
                     <ul class="list film-card-content__description">
@@ -48,10 +48,10 @@
                 </p>
             </li>
             <li class="film-card-content_btn">
-                <button type="submit" class="btn film-card-btn">
+                <button type="submit" class="btn film-card-btn watched-btn">
                     add to watched
                 </button>
-                <button type="submit" class="btn film-card-btn">
+                <button type="submit" class="btn film-card-btn queue-btn">
                     add to queue
                 </button>
             </li>
