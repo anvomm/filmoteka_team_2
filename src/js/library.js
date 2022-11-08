@@ -8,12 +8,6 @@ import {
   fetchMovieById,
 } from './fetchMovies';
 import { onOpenModal } from './modal';
-// import createMarkUp from '../templates/films-card.hbs';
-// import { onOpenModal } from './modal';
-// import { fetchGenres } from './fetchMovies';
-
-// const BASE_URL = 'https://api.themoviedb.org/';
-// const API_KEY = 'd929b7a4b435aa22496bb0793b172bfc';
 
 const refs = refsList();
 
@@ -93,9 +87,8 @@ if (refs.libraryQueueBtn)
 // WATCHED BTN
 
 async function onWatchedBtn() {
-  if (refs.libraryMoviesList) refs.libraryMoviesList.innerHTML = '';
-  if (refs.libraryDefaultContainer)
-    refs.libraryDefaultContainer.style.display = 'flex';
+  defaultContainerBuild();
+
   if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0) {
     defaultPageShow();
   }
@@ -150,6 +143,12 @@ function defaultClean() {
     refs.libraryDefaultContainer.style.display = 'none';
 }
 
+function defaultContainerBuild() {
+  if (refs.libraryMoviesList) refs.libraryMoviesList.innerHTML = '';
+  if (refs.libraryDefaultContainer)
+    refs.libraryDefaultContainer.style.display = 'flex';
+}
+
 // QUEUE BTN
 
 async function onQueueBtn() {
@@ -161,8 +160,7 @@ async function onQueueBtn() {
     !JSON.parse(localStorage.getItem(KEY__QUEUE)) ||
     JSON.parse(localStorage.getItem(KEY__QUEUE)).length === 0
   ) {
-    refs.libraryMoviesList.innerHTML = '';
-    refs.libraryDefaultContainer.style.display = 'flex';
+    defaultContainerBuild();
     defaultPageShow();
   }
   if (JSON.parse(localStorage.getItem(KEY__QUEUE)).length !== 0) {
@@ -187,4 +185,3 @@ async function renderQueueMoviesList() {
   const movies = await Promise.all(arrayOfPromises);
   return movies;
 }
-
