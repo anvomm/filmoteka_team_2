@@ -45,14 +45,22 @@
 
 #lampadario {
   position: absolute;
-  right: 4%;
+  right: 20%;
   top: 0;
+
+  @media screen and (min-width: 768px) {
+    right: 10%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    right: 23vh;
+  }
 }
 #filo {
   position: relative;
   background-color: #de732e69;
   width: 2px;
-  height: 100px;
+  height: 149px;
   left: 50%;
   margin-left: -1px;
   z-index: 1;
@@ -99,7 +107,7 @@
 .switcher-input {
   position: absolute;
   width: 90px;
-  height: 70px;
+  height: 52px;
   top: 60px;
   margin-left: -45px;
   opacity: 0;
@@ -117,13 +125,13 @@
   top: -100px;
 }
 .switcher-input[value='on']:checked + input[value='off'] {
-  top: 100px;
+  top: 163px;
 }
 
 label {
   width: 51px;
   height: 51px;
-  top: 114px;
+  top: 165px;
   position: absolute;
   left: 0;
   margin-left: -24px;
