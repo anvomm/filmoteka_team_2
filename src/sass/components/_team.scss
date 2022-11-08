@@ -35,7 +35,7 @@
 .goit__wrapper {
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
   @media screen and (min-width: 768px) {
     & {
@@ -109,44 +109,12 @@ div.team__image img {
   filter: alpha(opacity=0);
 }
 
-// .team__image {
-//   width: 100px;
-//   height: 100px;
-//   margin-bottom: 20px;
-//   display: inline-block;
-//   background-position: center center;
-//   background-repeat: no-repeat;
-// }
-
-// .team__image__item.first,
-// .team__image__item.second {
-//   border-radius: 50%;
-//   margin: 0;
-//   padding: 0;
-//   box-shadow: 0px 2px 7px rgba(34, 60, 80, 0.2);
-// }
-
-// .team__image__item.first {
-//   opacity: 1px;
-//   display: block;
-//   position: absolute;
-//   z-index: 100;
-//   transition-duration: 0.96s;
-//   -webkit-transition-duration: 0.96s;
-//   -moz-transition-duration: 0.96s;
-//   -o-transition-duration: 0.96s;
-//   -ms-transition-duration: 0.96s;
-// }
-
-// .team__image__item.first:hover {
-//   opacity: 0;
-// }
-
 .team__name {
   text-align: center;
   font-size: 18px;
   line-height: 1.15px;
   margin-bottom: 20px;
+  font-family: sans-serif;
 }
 
 .team__function {
@@ -162,7 +130,7 @@ div.team__image img {
 .social {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 7px;
 }
 
 .social__link {
@@ -176,10 +144,9 @@ div.team__image img {
 }
 
 .social__icon {
-  width: 20px;
-  height: 20px;
   fill: $social-icon;
-
+  width: 25px;
+  height: 25px;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   .social__link:hover & {

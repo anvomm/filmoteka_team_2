@@ -15,7 +15,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-left: -15px;
+    gap: 30px;
   }
 }
 
@@ -27,13 +27,11 @@ main {
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    flex-basis: calc((100% - 60px)/ 2);
-    margin-left: 15px;
+    flex-basis: calc((100% - 60px) / 2);
   }
 
   @media screen and (min-width: 1280px) {
-    flex-basis: calc((100% - 90px)/ 3);
-    margin-left: 15px;
+    flex-basis: calc((100% - 90px) / 3);
   }
 
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
