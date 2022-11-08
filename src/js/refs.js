@@ -36,5 +36,6 @@ export default function refs() {
     libraryMoviesList: document.querySelector('.library-movies'),
     libraryDefaultContainer: document.querySelector('.default-library-page'),
     footer: document.querySelector('.footer'),
+    footerText: document.querySelectorAll('.footer__text'),
   };
 }
