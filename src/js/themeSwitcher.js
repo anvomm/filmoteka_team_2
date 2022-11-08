@@ -22,6 +22,8 @@ function onClickThemeChange() {
     themeLight();
     localStorage.setItem(STORAGE_THEME_KEY, 'light');
   } else {
+    refs.body.classList.remove('theme-switcher');
+    refs.body.style.transition = 'background 0.7s ease-in-out';
     themeDark();
     localStorage.setItem(STORAGE_THEME_KEY, 'dark');
   }
