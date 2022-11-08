@@ -8,11 +8,7 @@ refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onCloseClickBackdrop);
 
 export function onOpenModal() {
-  let pagePosition = window.scrollY;
-  body.classList.add('disable-scroll');
-  body.dataset.position = pagePosition;
-  body.style.top = -pagePosition + 'px';
-  body.style.paddingRight = '17px';
+  pagePositionOnOpen();
 
   const id = this.dataset.action;
   fetchMovieById(id).then(resp => {
@@ -25,13 +21,7 @@ export function onOpenModal() {
 }
 
 function onCloseModal() {
-  let pagePosition = parseInt(body.dataset.position, 10);
-  body.style.top = 'auto';
-  body.classList.remove('disable-scroll');
-  window.scroll({ top: pagePosition, left: 0 });
-  body.removeAttribute('data-position');
-  body.style.paddingRight = '0px';
-
+  pageContentOnClose();
   window.removeEventListener('keydown', onCloseKeyEsc);
   refs.modalTmp.innerHTML = '';
   refs.modal.classList.add('is-hidden');
@@ -48,4 +38,21 @@ function onCloseKeyEsc(e) {
   if (e.code === 'Escape') {
     onCloseModal();
   }
+}
+
+export function pagePositionOnOpen() {
+  let pagePosition = window.scrollY;
+  body.classList.add('disable-scroll');
+  body.dataset.position = pagePosition;
+  body.style.top = -pagePosition + 'px';
+  body.style.paddingRight = '17px';
+}
+
+export function pageContentOnClose() {
+  let pagePosition = parseInt(body.dataset.position, 10);
+  body.style.top = 'auto';
+  body.classList.remove('disable-scroll');
+  window.scroll({ top: pagePosition, left: 0 });
+  body.removeAttribute('data-position');
+  body.style.paddingRight = '0px';
 }
