@@ -8,7 +8,6 @@ import {
 import { defaultPageShow } from './library';
 
 const refs = refsList();
-const body = document.body;
 
 let watchedMoviesToAdd = [];
 let moviesToQueue = [];
@@ -81,19 +80,19 @@ function onCloseKeyEsc(e) {
 
 export function pagePositionOnOpen() {
   let pagePosition = window.scrollY;
-  body.classList.add('disable-scroll');
-  body.dataset.position = pagePosition;
-  body.style.top = -pagePosition + 'px';
-  body.style.paddingRight = '17px';
+  refs.body.classList.add('disable-scroll');
+  refs.body.dataset.position = pagePosition;
+  refs.body.style.top = -pagePosition + 'px';
+  refs.body.style.paddingRight = '17px';
 }
 
 export function pageContentOnClose() {
-  let pagePosition = parseInt(body.dataset.position, 10);
-  body.style.top = 'auto';
-  body.classList.remove('disable-scroll');
+  let pagePosition = parseInt(refs.body.dataset.position, 10);
+  refs.body.style.top = 'auto';
+  refs.body.classList.remove('disable-scroll');
   window.scroll({ top: pagePosition, left: 0 });
-  body.removeAttribute('data-position');
-  body.style.paddingRight = '0px';
+  refs.body.removeAttribute('data-position');
+  refs.body.style.paddingRight = '0px';
 }
 
 function onWatchedBtnHandler() {

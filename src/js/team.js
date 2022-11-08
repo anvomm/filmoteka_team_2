@@ -2,7 +2,6 @@ import refsList from './refs';
 import { pagePositionOnOpen, pageContentOnClose } from './modal';
 
 const refs = refsList();
-const body = document.body;
 
 refs.teamOpen.addEventListener('click', onClickTeamOpen);
 
