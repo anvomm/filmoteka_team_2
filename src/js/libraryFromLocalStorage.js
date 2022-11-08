@@ -88,8 +88,8 @@ const refs = refsList();
 
 const KEY__WATCHED = 'watched';
 const KEY__QUEUE = 'queue';
-localStorage.setItem(KEY__WATCHED, JSON.stringify(watched));
-localStorage.setItem(KEY__QUEUE, JSON.stringify(queue));
+// localStorage.setItem(KEY__WATCHED, JSON.stringify(watched));
+// localStorage.setItem(KEY__QUEUE, JSON.stringify(queue));
 
 if (
   JSON.parse(!localStorage.getItem(KEY__WATCHED)) ||
@@ -182,3 +182,4 @@ function modalConnection() {
     card.addEventListener('click', onOpenModal)
   );
 }
+
