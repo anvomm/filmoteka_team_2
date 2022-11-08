@@ -1,8 +1,9 @@
 <header class="header header-library">
   <div class="header__container">
-    <nav class="header__navigation header-library__navigation">
-      <a href="./index.html" class="logo"
-        ><svg
+    <nav class="header__navigation">
+      <div class="logo-wrapper">
+        <a href="./index.html" class="logo"></a>
+        <svg
           class="logo__icon"
           width="24"
           height="24"
@@ -67,21 +68,32 @@
             class="svg-logo-8"
           ></path>
         </svg>
+
         <span class="logo__text">Filmoteka</span></a
       >
-
-      <ul class="header__navigation-list">
-        <li class="header__navigation-item">
-          <a href="./index.html" class="header__navigation-link">Home</a>
-        </li>
-        <li class="header__navigation-item">
-          <a
-            href="./library.html"
-            class="header__navigation-link header__navigation-link_current"
-            >My library</a
-          >
-        </li>
-      </ul>
+      </div>
+    
+      <div class="menu-wrapper">
+        <ul class="header__navigation-list">
+          <li class="header__navigation-item">
+            <a
+              href="./index.html"
+              class="header__navigation-link"
+              >Home</a
+            >
+          </li>
+          <li class="header__navigation-item">
+            <a href="./library.html" class="header__navigation-link header__navigation-link_current"
+              >My library</a
+            >
+          </li>
+        </ul>
+        <button type="button" class="btn__login">
+          <svg class="icon-login">
+            <use href="./images/sprite.svg#icon-login"></use>
+          </svg>
+        </button>
+      </div>
     </nav>
     <ul class="header-library__btn-list">
       <li class="header-library__btn-item">

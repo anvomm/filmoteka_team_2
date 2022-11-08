@@ -41,12 +41,19 @@
   }
 }
 
+.menu-wrapper,
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .header__navigation {
   margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
+
 .header__navigation-list {
   display: flex;
   justify-content: space-between;

@@ -73,3 +73,22 @@
     transform: rotate(-45deg);
   }
 }
+
+// BTN Login
+
+.btn__login {
+  background-color: transparent;
+  margin-left: 20px;
+}
+
+.icon-login {
+  width: 25px;
+  height: 25px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: $accent-color;
+  transition: transform 0.2s;
+
+  .btn__login:hover & {
+    transform: scale(1.2);
+  }
+}
