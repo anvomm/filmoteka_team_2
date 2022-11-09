@@ -11,7 +11,7 @@ const KEY__QUEUE = 'queue';
 // localStorage.setItem(KEY__QUEUE, JSON.stringify(queue));
 
 if (
-  JSON.parse(!localStorage.getItem(KEY__WATCHED)) ||
+  !JSON.parse(localStorage.getItem(KEY__WATCHED)) ||
   JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0
 ) {
   defaultPageShow();
@@ -26,8 +26,16 @@ if (refs.libraryQueueBtn)
 
 function onWatchedBtn() {
   defaultContainerBuild();
+  if (refs.libraryWatchedBtn)
+    refs.libraryWatchedBtn.classList.add('header-library__btn-current');
+  if (refs.libraryQueueBtn)
+    refs.libraryQueueBtn.classList.remove('header-library__btn-current');
 
-  if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0) {
+  if (
+    !JSON.parse(localStorage.getItem(KEY__WATCHED)) ||
+    JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0
+  ) {
+    defaultContainerBuild();
     defaultPageShow();
   }
 
@@ -36,11 +44,6 @@ function onWatchedBtn() {
   refsList().filmsElements.forEach(card =>
     card.addEventListener('click', onOpenModal)
   );
-
-  if (refs.libraryWatchedBtn)
-    refs.libraryWatchedBtn.classList.add('header-library__btn-current');
-  if (refs.libraryQueueBtn)
-    refs.libraryQueueBtn.classList.remove('header-library__btn-current');
 }
 
 function onQueueBtn() {
@@ -61,7 +64,10 @@ function onQueueBtn() {
 }
 
 export function libraryMainPageBuild() {
-  if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length !== 0) {
+  if (
+    JSON.parse(localStorage.getItem(KEY__WATCHED)) &&
+    JSON.parse(localStorage.getItem(KEY__WATCHED)).length !== 0
+  ) {
     const markup = JSON.parse(localStorage.getItem(KEY__WATCHED))
       .map(movie => createMarkUp(movie))
       .join('');
@@ -74,7 +80,10 @@ export function libraryMainPageBuild() {
 }
 
 function libraryQueuePageBuild() {
-  if (JSON.parse(localStorage.getItem(KEY__QUEUE)).length !== 0) {
+  if (
+    JSON.parse(localStorage.getItem(KEY__QUEUE)) &&
+    JSON.parse(localStorage.getItem(KEY__QUEUE)).length !== 0
+  ) {
     const markup = JSON.parse(localStorage.getItem(KEY__QUEUE))
       .map(movie => createMarkUp(movie))
       .join('');
