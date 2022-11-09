@@ -31,7 +31,7 @@ const doWhenPageIsClicked = event => {
   checkWhereUserHasClicked(event);
 
   fetchTrendingMovies(pageToFetch).then(data => {
-    refs.filmsList.innerHTML = '';
+    /* refs.filmsList.innerHTML = ''; */
     renderList(data.results);
 
     let lastPageNumber = data.total_pages;
@@ -47,7 +47,8 @@ const doWhenPageIsClicked = event => {
     }
   });
 };
-refs.pagination.addEventListener('click', doWhenPageIsClicked);
+if (refs.pagination)
+  refs.pagination.addEventListener('click', doWhenPageIsClicked);
 
 // const doWhenSearch = event => {
 //   console.log(event);

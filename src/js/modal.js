@@ -22,8 +22,12 @@ export function onOpenModal() {
 
   const id = this.dataset.action;
   fetchMovieById(id).then(resp => {
+    const loader = new ldLoader({ root: '.ldld.full' });
+    loader.on();
     const markup = modelTempl(resp);
     refs.modalTmp.insertAdjacentHTML('beforeend', markup);
+
+    loader.off();
 
     if (JSON.parse(localStorage.getItem(KEY__WATCHED))) {
       const data = JSON.parse(localStorage.getItem(KEY__WATCHED));
@@ -130,7 +134,7 @@ function onWatchedBtnHandler() {
     );
     arr.splice(indexToDelete, 1);
     localStorage.setItem(KEY__WATCHED, JSON.stringify(arr));
-    
+
     watchedBtn.innerText = 'ADD TO WATCHED';
     libraryMainPageBuild();
     if (arr.length === 0) {
