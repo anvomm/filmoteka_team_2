@@ -6,17 +6,34 @@ import { renderList } from './renderFilmList';
 import refsList from './refs';
 const refs = refsList();
 
+import { query } from './search';
 let pageToFetch;
 
 export function stylizePaginationOnStart(firstPageNumber, lastPageNumber) {
   stylizePaginationPageOne(firstPageNumber);
-  refs.paginationFirstPageBtn.classList.add('pagination__item_current');
   refs.paginationLastPageBtn.textContent = lastPageNumber;
+}
+
+export function renderPagination(pageToFetch, lastPageNumber) {
+  // stylizePaginationPageOne(pageToFetch);
+  // refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+  //refs.paginationLastPageBtn.textContent = lastPageNumber;
+  if (lastPageNumber >= 10) {
+    console.log(`total pages = ${lastPageNumber}`);
+    renderPaginationIfTotalPagesMoreThanEight(pageToFetch, lastPageNumber);
+  } else if (lastPageNumber >= 2 || lastPageNumber <= 9) {
+    console.log(`total pages = ${lastPageNumber}`);
+    renderPaginationIfTotalPagesLessThanEight(pageToFetch, lastPageNumber);
+  } else {
+    console.log(`total pages = ${lastPageNumber}`);
+    refs.pagination.style.display = 'none';
+  }
 }
 
 function stylizePaginationPageOne(firstPageNumber) {
   refs.paginationArrowLeft.classList.add('visually-hidden');
   refs.paginationArrowRight.classList.remove('visually-hidden');
+  refs.paginationFirstPageBtn.classList.add('pagination__item_current');
   refs.paginationFirstPageBtn.textContent = firstPageNumber;
   refs.paginationSecondPageBtn.textContent = firstPageNumber + 1;
   refs.paginationThirdPageBtn.textContent = firstPageNumber + 2;
@@ -27,7 +44,7 @@ function stylizePaginationPageOne(firstPageNumber) {
   refs.paginationEighthPageBtn.textContent = '...';
 }
 
-const doWhenPageIsClicked = event => {
+export const logicForPopularMoviesPag = event => {
   checkWhereUserHasClicked(event);
 
   fetchTrendingMovies(pageToFetch).then(data => {
@@ -35,81 +52,39 @@ const doWhenPageIsClicked = event => {
     renderList(data.results);
 
     let lastPageNumber = data.total_pages;
-    if (lastPageNumber >= 10) {
-      console.log('mnogo str');
-      renderPaginationIfTotalPagesMoreThanEight(pageToFetch, lastPageNumber);
-    } else if (lastPageNumber >= 2 || lastPageNumber <= 9) {
-      console.log(lastPageNumber);
-      console.log('malo stranic');
-      renderPaginationIfTotalPagesLessThanEight(pageToFetch, lastPageNumber);
-    } else {
-      console.log('tut budet logic total pages <= 1');
-    }
+
+    renderPagination(pageToFetch, lastPageNumber);
   });
 };
+
+refs.pagination.addEventListener('click', logicForPopularMoviesPag);
+
 if (refs.pagination)
   refs.pagination.addEventListener('click', doWhenPageIsClicked);
 
-// const doWhenSearch = event => {
-//   console.log(event);
-//   const query = refs.formInput.value.trim(); //поисковое слово
-//   checkWhereUserHasClicked(event);
 
-//   fetchMovieByQuery(query, pageToFetch).then(data => {
-//     refs.filmsList.innerHTML = '';
-//     renderList(data.results);
+export const logicForSearchedMoviesPas = event => {
+  checkWhereUserHasClicked(event);
+  //query = 'cat';
+  fetchMovieByQuery(query, pageToFetch).then(data => {
+    refs.filmsList.innerHTML = '';
+    renderList(data.results);
+    let lastPageNumber = data.total_pages;
 
-//     let lastPageNumber = data.total_pages;
-
-//     renderPaginationIfTotalPagesMoreThanEight(pageToFetch, lastPageNumber);
-//   });
-// };
-// refs.form.addEventListener('submit', doWhenSearch);
-
-function removeClassCurrent() {
-  refs.paginationAllItems.forEach(item => {
-    if (item.classList.contains('pagination__item_current')) {
-      item.classList.remove('pagination__item_current');
-    }
+    renderPagination(pageToFetch, lastPageNumber);
   });
-}
-function addClassCurrent() {
-  refs.paginationAllItems.forEach(item => {
-    if (Number(item.textContent) === pageToFetch) {
-      item.classList.add('pagination__item_current');
-    }
-  });
-}
-function checkWhereUserHasClicked(event) {
-  //проверяем на какой элемент в пагинации кликнули, записываем данные в pageToFetch
-  //если клик по цифре
-  if (event.target.classList.contains('pagination__item')) {
-    pageToFetch = Number(event.target.textContent);
-  }
-  //если клик по левой стрелке
-  if (
-    event.target.classList.contains('pagination__arrow_left') ||
-    event.target.classList.contains('test1') ||
-    event.target.classList.contains('test2')
-  ) {
-    pageToFetch = pageToFetch - 1;
-  }
-  //если клик по правой стрелке
-  if (
-    event.target.classList.contains('pagination__arrow_right') ||
-    event.target.classList.contains('test-icon-arrow-right') ||
-    event.target.classList.contains('test-vector-arrow-right')
-  ) {
-    pageToFetch = pageToFetch + 1;
-  }
-}
+};
+refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
+
 function renderPaginationIfTotalPagesMoreThanEight(
   pageToFetch,
   lastPageNumber
 ) {
   if (pageToFetch === 1) {
     stylizePaginationPageOne(pageToFetch);
-    removeClassCurrent();
+    //refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+    refs.paginationLastPageBtn.textContent = lastPageNumber;
+    //removeClassCurrent();
     addClassCurrent();
   }
   if (pageToFetch >= 2 && pageToFetch <= 4) {
@@ -178,6 +153,7 @@ function renderPaginationIfTotalPagesLessThanEight(
   lastPageNumber
 ) {
   if (lastPageNumber == 2) {
+    refs.paginationSecondPageBtn.style.display = 'list-item';
     refs.paginationThirdPageBtn.style.display = 'none';
     refs.paginationFourPageBtn.style.display = 'none';
     refs.paginationMiddlePageBtn.style.display = 'none';
@@ -188,7 +164,7 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
     if (pageToFetch === 2) {
@@ -199,6 +175,7 @@ function renderPaginationIfTotalPagesLessThanEight(
     }
   }
   if (lastPageNumber === 3) {
+    refs.paginationThirdPageBtn.style.display = 'list-item';
     refs.paginationFourPageBtn.style.display = 'none';
     refs.paginationMiddlePageBtn.style.display = 'none';
     refs.paginationSixPageBtn.style.display = 'none';
@@ -220,11 +197,12 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
   }
   if (lastPageNumber === 4) {
+    refs.paginationFourPageBtn.style.display = 'list-item';
     refs.paginationMiddlePageBtn.style.display = 'none';
     refs.paginationSixPageBtn.style.display = 'none';
     refs.paginationSevenPageBtn.style.display = 'none';
@@ -246,11 +224,12 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
   }
   if (lastPageNumber === 5) {
+    refs.paginationMiddlePageBtn.style.display = 'list-item';
     refs.paginationSixPageBtn.style.display = 'none';
     refs.paginationSevenPageBtn.style.display = 'none';
     refs.paginationEighthPageBtn.style.display = 'none';
@@ -271,11 +250,12 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
   }
   if (lastPageNumber === 6) {
+    refs.paginationSixPageBtn.style.display = 'list-item';
     refs.paginationSevenPageBtn.style.display = 'none';
     refs.paginationEighthPageBtn.style.display = 'none';
     refs.paginationLastPageBtn.style.display = 'none';
@@ -300,12 +280,12 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
   }
   if (lastPageNumber === 7) {
-    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationSevenPageBtn.style.display = 'none';
     refs.paginationLastPageBtn.style.display = 'none';
     if (pageToFetch === 7) {
       refs.paginationArrowLeft.classList.remove('visually-hidden');
@@ -329,11 +309,12 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
   }
   if (lastPageNumber === 8) {
+    refs.paginationEighthPageBtn.style.display = 'list-item';
     refs.paginationEighthPageBtn.textContent = '8';
     refs.paginationLastPageBtn.style.display = 'none';
     if (pageToFetch === 8) {
@@ -359,11 +340,12 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      //removeClassCurrent();
       addClassCurrent();
     }
   }
   if (lastPageNumber === 9) {
+    refs.paginationLastPageBtn.style.display = 'list-item';
     refs.paginationEighthPageBtn.textContent = '8';
     if (pageToFetch === 9) {
       refs.paginationArrowLeft.classList.remove('visually-hidden');
@@ -389,55 +371,45 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      removeClassCurrent();
+      // removeClassCurrent();
       addClassCurrent();
     }
   }
 }
-
-// //а может этот весь новый блок про 9 страниц запихнуть в условие if вот это общее число меньше, чем 180, а весь другой код применять элс?
-
-// // если вернулась только 1 страница, то пагинацию убрать вообще
-// if (lastPageNumber === 1) {
-//   refs.pagination.classList.add('visually-hidden');
-// }
-// //если вернулось от 2 до 9 страниц, то правую стрелку убрать
-// if (lastPageNumber > 1 && lastPageNumber <= 9) {
-//   refs.paginationArrowRight.classList.add('visually-hidden');
-// }
-// //если вернулось 2 страницы
-// if (lastPageNumber === 2) {
-//   refs.paginationArrowLeft.classList.add('visually-hidden');
-//   refs.paginationSecondPageBtn.style.display = 'none';
-//   refs.paginationThirdPageBtn.style.display = 'none';
-//   refs.paginationFourPageBtn.style.display = 'none';
-//   refs.paginationMiddlePageBtn.style.display = 'none';
-//   refs.paginationSixPageBtn.style.display = 'none';
-//   refs.paginationSevenPageBtn.style.display = 'none';
-//   refs.paginationEighthPageBtn.style.display = 'none';
-
-//   // refs.paginationSecondPageBtn.classList.add('visually-hidden');
-//   // refs.paginationThirdPageBtn.classList.add('visually-hidden');
-//   // refs.paginationFourPageBtn.classList.add('visually-hidden');
-//   // refs.paginationMiddlePageBtn.classList.add('visually-hidden');
-//   // refs.paginationSixPageBtn.classList.add('visually-hidden');
-//   // refs.paginationSevenPageBtn.classList.add('visually-hidden');
-//   // refs.paginationEighthPageBtn.classList.add('visually-hidden');
-// }
-// if (lastPageNumber === 3) {
-//   refs.paginationFirstPageBtn.textContent = pageToFetch;
-//   refs.paginationSecondPageBtn.textContent = lastPageNumber - 1;
-//   refs.paginationThirdPageBtn.style.display = 'none';
-//   refs.paginationFourPageBtn.style.display = 'none';
-//   refs.paginationMiddlePageBtn.style.display = 'none';
-//   refs.paginationSixPageBtn.style.display = 'none';
-//   refs.paginationSevenPageBtn.style.display = 'none';
-//   refs.paginationEighthPageBtn.style.display = 'none';
-//   refs.paginationLastPageBtn.textContent = lastPageNumber;
-//   // refs.paginationThirdPageBtn.classList.add('visually-hidden');
-//   // refs.paginationFourPageBtn.classList.add('visually-hidden');
-//   // refs.paginationMiddlePageBtn.classList.add('visually-hidden');
-//   // refs.paginationSixPageBtn.classList.add('visually-hidden');
-//   // refs.paginationSevenPageBtn.classList.add('visually-hidden');
-//   // refs.paginationEighthPageBtn.classList.add('visually-hidden');
-// }
+function checkWhereUserHasClicked(event) {
+  //проверяем на какой элемент в пагинации кликнули, записываем данные в pageToFetch
+  //если клик по цифре
+  if (event.target.classList.contains('pagination__item')) {
+    pageToFetch = Number(event.target.textContent);
+  }
+  //если клик по левой стрелке
+  if (
+    event.target.classList.contains('pagination__arrow_left') ||
+    event.target.classList.contains('test1') ||
+    event.target.classList.contains('test2')
+  ) {
+    pageToFetch = pageToFetch - 1;
+  }
+  //если клик по правой стрелке
+  if (
+    event.target.classList.contains('pagination__arrow_right') ||
+    event.target.classList.contains('test-icon-arrow-right') ||
+    event.target.classList.contains('test-vector-arrow-right')
+  ) {
+    pageToFetch = pageToFetch + 1;
+  }
+}
+function removeClassCurrent() {
+  refs.paginationAllItems.forEach(item => {
+    if (item.classList.contains('pagination__item_current')) {
+      item.classList.remove('pagination__item_current');
+    }
+  });
+}
+function addClassCurrent() {
+  refs.paginationAllItems.forEach(item => {
+    if (Number(item.textContent) === pageToFetch) {
+      item.classList.add('pagination__item_current');
+    }
+  });
+}
