@@ -22,11 +22,12 @@
 @media screen and (min-width: 768px) {
   .modal {
     max-width: 618px;
-    height: 562px;
+    min-height: 413px;
     padding: 40px 30px;
   }
   .modal-card__img {
     height: 373px;
+    /* max-width: 396px; */
   }
 }
 
@@ -38,6 +39,7 @@
   }
   .modal-card__img {
     height: 477px;
+    width: 360px;
   }
 }
 
