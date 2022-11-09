@@ -33,8 +33,9 @@ export async function renderList(data) {
     .join('');
   if (refs.filmsList) {
     refs.filmsList.insertAdjacentHTML('beforeend', markup);
-  }
 
+    loader.off();
+  }
+  refs.pagination.style.display = 'flex';
   modalConnection();
-  loader.off();
 }

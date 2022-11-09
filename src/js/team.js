@@ -39,11 +39,21 @@ function addListenersForClose() {
 
   window.addEventListener('keydown', onEscClose);
   refs.team.addEventListener('click', onBackdropClickClose);
+  document.addEventListener('click', function (e) {
+    if (document.activeElement.toString() == '[object HTMLButtonElement]') {
+      document.activeElement.blur();
+    }
+  });
 }
 function removeAllListeners() {
   refs.teamModalCloseBtn.removeEventListener('click', onCloseBtnClick);
   refs.team.removeEventListener('click', onBackdropClickClose);
   window.removeEventListener('keydown', onEscClose);
+  document.removeEventListener('click', function (e) {
+    if (document.activeElement.toString() == '[object HTMLButtonElement]') {
+      document.activeElement.blur();
+    }
+  });
 }
 
 function onClose() {

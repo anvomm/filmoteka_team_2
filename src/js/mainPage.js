@@ -1,7 +1,10 @@
 import { fetchTrendingMovies } from './fetchMovies';
 import { renderList } from './renderFilmList';
 import { stylizePaginationOnStart } from './pagination';
+import refsList from './refs';
 
+const refs = refsList();
+refs.pagination.style.display = 'none';
 let page = 1;
 
 fetchTrendingMovies(page).then(data => {

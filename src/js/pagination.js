@@ -48,7 +48,7 @@ export const logicForPopularMoviesPag = event => {
   checkWhereUserHasClicked(event);
 
   fetchTrendingMovies(pageToFetch).then(data => {
-    refs.filmsList.innerHTML = '';
+    /* refs.filmsList.innerHTML = ''; */
     renderList(data.results);
 
     let lastPageNumber = data.total_pages;
@@ -56,7 +56,12 @@ export const logicForPopularMoviesPag = event => {
     renderPagination(pageToFetch, lastPageNumber);
   });
 };
+
 refs.pagination.addEventListener('click', logicForPopularMoviesPag);
+
+if (refs.pagination)
+  refs.pagination.addEventListener('click', doWhenPageIsClicked);
+
 
 export const logicForSearchedMoviesPas = event => {
   checkWhereUserHasClicked(event);

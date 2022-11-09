@@ -15,11 +15,14 @@ if (refs.form) {
 }
 export async function onSubmitForm(event) {
   event.preventDefault();
+  refs.pagination.style.display = 'none';
+
   refs.notification.style.visibility = 'hidden';
   const page = 1;
 
   query = refs.formInput.value.trim();
   refs.pagination.style.display = 'flex';
+
   const loader = new ldLoader({ root: '.ldld.full' });
   loader.on();
 
@@ -32,13 +35,15 @@ export async function onSubmitForm(event) {
 
   if (movies.length === 0) {
     loader.off();
+    refs.pagination.style.display = 'none';
     refs.notification.textContent = `Search result not successful. Enter the correct movie name.`;
     refs.notification.style.color = '#ff001b';
     refs.notification.style.visibility = 'visible';
-    refs.pagination.style.display = 'none';
-    renderList(movies);
-    /*  setTimeout(() => {
-      refs.notification.style.visibility = 'hidden';
+    refs.filmsList.innerHTML = '';
+    refs.form.reset();
+
+    /*   setTimeout(() => {
+      refs.notification.style.visibility = 'visible';
     }, 8000); */
 
     return;
@@ -46,6 +51,7 @@ export async function onSubmitForm(event) {
 
   //   вызываем функцию рисования разметки
   renderList(movies);
+  refs.form.reset();
   loader.off();
   //снимаем слушателя с пагинации поп.фильмов
   refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
