@@ -93,6 +93,10 @@
     font-size: 16px;
     line-height: 1.2;
   }
+
+  .theme-switcher & {
+    color: $white-color;
+  }
 }
 
 .library-default-film-card__genres {
