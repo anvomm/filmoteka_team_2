@@ -49,6 +49,13 @@
       background-color: $bg-btn-uptop-h;
       box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
     }
+    .theme-switcher & {
+      background-color: #58534b;
+
+      &:hover {
+        background-color: #6a6359;
+      }
+    }
   }
 
   .arrow_upview {
@@ -89,7 +96,7 @@
   height: 25px;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   fill: $accent-color;
-  transition: transform 0.2s;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   .btn__login:hover & {
     transform: scale(1.2);
