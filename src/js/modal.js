@@ -72,6 +72,11 @@ export function onOpenModal() {
 
     window.addEventListener('keydown', onCloseKeyEsc);
     refs.modal.classList.remove('is-hidden');
+    document.addEventListener('click', function (e) {
+      if (document.activeElement.toString() == '[object HTMLButtonElement]') {
+        document.activeElement.blur();
+      }
+    });
   });
 }
 
@@ -81,6 +86,11 @@ export function onCloseModal() {
   window.removeEventListener('keydown', onCloseKeyEsc);
   refs.modalTmp.innerHTML = '';
   refs.modal.classList.add('is-hidden');
+  document.removeEventListener('click', function (e) {
+    if (document.activeElement.toString() == '[object HTMLButtonElement]') {
+      document.activeElement.blur();
+    }
+  });
 }
 
 function onCloseClickBackdrop(e) {

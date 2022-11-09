@@ -144,15 +144,18 @@ div.team__image img {
   height: 25px;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  .social__link:hover & {
+  .social__link:hover &,
+  .social__link:focus {
     fill: $accent-color;
   }
 }
 
-.team__item:hover .first {
+.team__item:hover .first,
+.team__item:focus .first {
   display: none;
 }
 
-.team__item:hover .second {
+.team__item:hover .second,
+.team__item:focus .second {
   display: block;
 }
