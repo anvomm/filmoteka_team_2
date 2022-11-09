@@ -35,8 +35,16 @@ const doWhenPageIsClicked = event => {
     renderList(data.results);
 
     let lastPageNumber = data.total_pages;
-
-    renderPaginationIfTotalPagesMoreThanEight(pageToFetch, lastPageNumber);
+    if (lastPageNumber >= 10) {
+      console.log('mnogo str');
+      renderPaginationIfTotalPagesMoreThanEight(pageToFetch, lastPageNumber);
+    } else if (lastPageNumber >= 2 || lastPageNumber <= 9) {
+      console.log(lastPageNumber);
+      console.log('malo stranic');
+      renderPaginationIfTotalPagesLessThanEight(pageToFetch, lastPageNumber);
+    } else {
+      console.log('tut budet logic total pages <= 1');
+    }
   });
 };
 refs.pagination.addEventListener('click', doWhenPageIsClicked);
@@ -70,6 +78,29 @@ function addClassCurrent() {
       item.classList.add('pagination__item_current');
     }
   });
+}
+function checkWhereUserHasClicked(event) {
+  //проверяем на какой элемент в пагинации кликнули, записываем данные в pageToFetch
+  //если клик по цифре
+  if (event.target.classList.contains('pagination__item')) {
+    pageToFetch = Number(event.target.textContent);
+  }
+  //если клик по левой стрелке
+  if (
+    event.target.classList.contains('pagination__arrow_left') ||
+    event.target.classList.contains('test1') ||
+    event.target.classList.contains('test2')
+  ) {
+    pageToFetch = pageToFetch - 1;
+  }
+  //если клик по правой стрелке
+  if (
+    event.target.classList.contains('pagination__arrow_right') ||
+    event.target.classList.contains('test-icon-arrow-right') ||
+    event.target.classList.contains('test-vector-arrow-right')
+  ) {
+    pageToFetch = pageToFetch + 1;
+  }
 }
 function renderPaginationIfTotalPagesMoreThanEight(
   pageToFetch,
@@ -141,27 +172,225 @@ function renderPaginationIfTotalPagesMoreThanEight(
     refs.paginationSecondPageBtn.textContent = '...';
   }
 }
-function checkWhereUserHasClicked(event) {
-  //проверяем на какой элемент в пагинации кликнули, записываем данные в pageToFetch
-  //если клик по цифре
-  if (event.target.classList.contains('pagination__item')) {
-    pageToFetch = Number(event.target.textContent);
+function renderPaginationIfTotalPagesLessThanEight(
+  pageToFetch,
+  lastPageNumber
+) {
+  if (lastPageNumber == 2) {
+    refs.paginationThirdPageBtn.style.display = 'none';
+    refs.paginationFourPageBtn.style.display = 'none';
+    refs.paginationMiddlePageBtn.style.display = 'none';
+    refs.paginationSixPageBtn.style.display = 'none';
+    refs.paginationSevenPageBtn.style.display = 'none';
+    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (pageToFetch === 2) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
   }
-  //если клик по левой стрелке
-  if (
-    event.target.classList.contains('pagination__arrow_left') ||
-    event.target.classList.contains('test1') ||
-    event.target.classList.contains('test2')
-  ) {
-    pageToFetch = pageToFetch - 1;
+  if (lastPageNumber === 3) {
+    refs.paginationFourPageBtn.style.display = 'none';
+    refs.paginationMiddlePageBtn.style.display = 'none';
+    refs.paginationSixPageBtn.style.display = 'none';
+    refs.paginationSevenPageBtn.style.display = 'none';
+    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 3) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (pageToFetch === 2) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
   }
-  //если клик по правой стрелке
-  if (
-    event.target.classList.contains('pagination__arrow_right') ||
-    event.target.classList.contains('test-icon-arrow-right') ||
-    event.target.classList.contains('test-vector-arrow-right')
-  ) {
-    pageToFetch = pageToFetch + 1;
+  if (lastPageNumber === 4) {
+    refs.paginationMiddlePageBtn.style.display = 'none';
+    refs.paginationSixPageBtn.style.display = 'none';
+    refs.paginationSevenPageBtn.style.display = 'none';
+    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 4) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (pageToFetch === 3 || pageToFetch === 2) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+  }
+  if (lastPageNumber === 5) {
+    refs.paginationSixPageBtn.style.display = 'none';
+    refs.paginationSevenPageBtn.style.display = 'none';
+    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 5) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (pageToFetch === 4 || pageToFetch === 3 || pageToFetch === 2) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+  }
+  if (lastPageNumber === 6) {
+    refs.paginationSevenPageBtn.style.display = 'none';
+    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 6) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (
+      pageToFetch === 5 ||
+      pageToFetch === 4 ||
+      pageToFetch === 3 ||
+      pageToFetch === 2
+    ) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+  }
+  if (lastPageNumber === 7) {
+    refs.paginationEighthPageBtn.style.display = 'none';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 7) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (
+      pageToFetch === 6 ||
+      pageToFetch === 5 ||
+      pageToFetch === 4 ||
+      pageToFetch === 3 ||
+      pageToFetch === 2
+    ) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+  }
+  if (lastPageNumber === 8) {
+    refs.paginationEighthPageBtn.textContent = '8';
+    refs.paginationLastPageBtn.style.display = 'none';
+    if (pageToFetch === 8) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (
+      pageToFetch === 7 ||
+      pageToFetch === 6 ||
+      pageToFetch === 5 ||
+      pageToFetch === 4 ||
+      pageToFetch === 3 ||
+      pageToFetch === 2
+    ) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+  }
+  if (lastPageNumber === 9) {
+    refs.paginationEighthPageBtn.textContent = '8';
+    if (pageToFetch === 9) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.add('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+    if (
+      pageToFetch === 8 ||
+      pageToFetch === 7 ||
+      pageToFetch === 6 ||
+      pageToFetch === 5 ||
+      pageToFetch === 4 ||
+      pageToFetch === 3 ||
+      pageToFetch === 2
+    ) {
+      refs.paginationArrowLeft.classList.remove('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
+
+    if (pageToFetch === 1) {
+      refs.paginationArrowLeft.classList.add('visually-hidden');
+      refs.paginationArrowRight.classList.remove('visually-hidden');
+      removeClassCurrent();
+      addClassCurrent();
+    }
   }
 }
 
