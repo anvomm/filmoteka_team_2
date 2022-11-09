@@ -26,6 +26,10 @@
   border-radius: 5px;
   background-color: $secondary-accent-color;
   color: $white-color;
+
+  .theme-switcher & {
+    background-color: #7e6350;
+  }
 }
 
 .pagination__arrow_left,
@@ -38,6 +42,10 @@
   border-radius: 5px;
   cursor: pointer;
   background-color: $footer-bg-color;
+
+  .theme-switcher & {
+    background-color: #877d71;
+  }
 }
 
 // .pagination__arrow_left {

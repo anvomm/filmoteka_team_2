@@ -7,6 +7,10 @@
   border-radius: 5px;
   margin: auto;
   background-color: $white-color;
+  .theme-switcher & {
+    background-color: #3b362f;
+    box-shadow: 0px 0px 24px 0px rgb(215 112 44);
+  }
 
   @media screen and (max-width: 359px) {
     overflow-y: scroll;
@@ -96,6 +100,10 @@ div.team__image img {
 .team__image:hover img.image__second {
   opacity: 1;
   filter: alpha(opacity=100);
+
+  .theme-switcher & {
+    box-shadow: 0 0 24px #d7702c;
+  }
 }
 .team__image:hover img.image__first,
 .team__image img.image__first:hover {
@@ -110,6 +118,9 @@ div.team__image img {
   line-height: 1.15px;
   margin-bottom: 20px;
   font-family: sans-serif;
+  .theme-switcher & {
+    color: #d7d7d7;
+  }
 }
 
 .team__function {
@@ -118,6 +129,9 @@ div.team__image img {
   font-size: 16px;
   line-height: 1.1px;
   margin-bottom: 15px;
+  .theme-switcher & {
+    color: #c1906e;
+  }
 }
 
 // social
@@ -134,7 +148,6 @@ div.team__image img {
   border-radius: 50%;
   background-color: transparent;
   color: $main-color;
-
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -147,6 +160,10 @@ div.team__image img {
   .social__link:hover &,
   .social__link:focus {
     fill: $accent-color;
+  }
+
+  .theme-switcher & {
+    fill: #727272;
   }
 }
 
