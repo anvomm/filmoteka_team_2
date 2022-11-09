@@ -37,5 +37,8 @@ export async function renderList(data) {
     loader.off();
   }
   refs.pagination.style.display = 'flex';
+  if (data.length < 20) {
+    refs.pagination.style.display = 'none';
+  }
   modalConnection();
 }
