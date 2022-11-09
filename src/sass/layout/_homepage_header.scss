@@ -58,8 +58,8 @@
   display: flex;
   justify-content: space-between;
 }
-.header__navigation-item + .header__navigation-item {
-  margin-left: 40px;
+.header__navigation-item:not(:last-child) {
+  margin-right: 40px;
 }
 .header__navigation-link {
   display: block;
@@ -70,7 +70,6 @@
   line-height: 14px;
   color: #ffffff;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
   &:hover,
   &:focus {
     transform: scale(1.2);

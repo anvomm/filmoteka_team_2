@@ -133,6 +133,10 @@
   border-radius: 5px;
   background-color: #ff6b01;
   color: #fff;
+
+  .theme-switcher & {
+    background-color: #994d15;
+  }
 }
 
 .modal-btn-close {
