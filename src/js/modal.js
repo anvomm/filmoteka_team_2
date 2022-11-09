@@ -148,6 +148,7 @@ function onWatchedBtnHandler() {
     localStorage.setItem(KEY__WATCHED, JSON.stringify(arr));
 
     watchedBtn.innerText = 'ADD TO WATCHED';
+
     libraryMainPageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();

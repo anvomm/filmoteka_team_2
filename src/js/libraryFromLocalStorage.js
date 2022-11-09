@@ -2,6 +2,7 @@ import { defaultPageShow } from './library';
 import refsList from './refs';
 import createMarkUp from '../templates/films-card.hbs';
 import { modalConnection } from './modalConnection';
+import { onOpenModal } from './modal';
 
 const refs = refsList();
 
@@ -40,6 +41,9 @@ function onWatchedBtn() {
   }
 
   libraryMainPageBuild();
+  /* refsList().filmsElements.forEach(card =>
+    card.addEventListener('click', onOpenModal)
+  ); */
 }
 
 function onQueueBtn() {
@@ -72,7 +76,9 @@ export function libraryMainPageBuild() {
       refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
   }
 
-  modalConnection();
+  refsList().filmsElements.forEach(card =>
+    card.addEventListener('click', onOpenModal)
+  );
 }
 
 export function libraryQueuePageBuild() {
