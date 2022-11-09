@@ -40,10 +40,6 @@ function onWatchedBtn() {
   }
 
   libraryMainPageBuild();
-
-  refsList().filmsElements.forEach(card =>
-    card.addEventListener('click', onOpenModal)
-  );
 }
 
 function onQueueBtn() {
@@ -79,7 +75,7 @@ export function libraryMainPageBuild() {
   modalConnection();
 }
 
-function libraryQueuePageBuild() {
+export function libraryQueuePageBuild() {
   if (
     JSON.parse(localStorage.getItem(KEY__QUEUE)) &&
     JSON.parse(localStorage.getItem(KEY__QUEUE)).length !== 0

@@ -4,6 +4,7 @@ import modelTempl from '../templates/modal-content.hbs';
 import {
   defaultContainerBuild,
   libraryMainPageBuild,
+  libraryQueuePageBuild,
 } from './libraryFromLocalStorage';
 import { defaultPageShow } from './library';
 
@@ -13,6 +14,7 @@ let watchedMoviesToAdd = [];
 let moviesToQueue = [];
 const KEY__WATCHED = 'watched';
 const KEY__QUEUE = 'queue';
+let currentFilm = {};
 
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onCloseClickBackdrop);
@@ -51,6 +53,17 @@ export function onOpenModal() {
         document.querySelector('.queue-btn').innerText = 'REMOVE FROM QUEUE';
       }
     }
+
+    currentFilm = {
+      poster_path: document.querySelector('.modal-card__img').src.slice(31),
+      id: document.querySelector('.modal-card__img').dataset.id,
+      title: document.querySelector('.film-card-content__title').textContent,
+      vote_average: document.querySelector('.rating').textContent,
+      genre_ids: document.querySelector('.film-card-content__item-text-right')
+        .textContent,
+      release_date: document.querySelector('.film-card-content__title').dataset
+        .date,
+    };
 
     const watchedBtn = document.querySelector('.watched-btn');
     const queueBtn = document.querySelector('.queue-btn');
@@ -101,16 +114,6 @@ export function pageContentOnClose() {
 
 function onWatchedBtnHandler() {
   const watchedBtn = document.querySelector('.watched-btn');
-  const currentFilm = {
-    poster_path: document.querySelector('.modal-card__img').src.slice(31),
-    id: document.querySelector('.modal-card__img').dataset.id,
-    title: document.querySelector('.film-card-content__title').textContent,
-    vote_average: document.querySelector('.rating').textContent,
-    genre_ids: document.querySelector('.film-card-content__item-text-right')
-      .textContent,
-    release_date: document.querySelector('.film-card-content__title').dataset
-      .date,
-  };
 
   if (watchedBtn.innerText.toUpperCase() === 'ADD TO WATCHED') {
     const localStorageHasData = JSON.parse(localStorage.getItem(KEY__WATCHED));
@@ -147,17 +150,6 @@ function onWatchedBtnHandler() {
 function onQueueBtnHandler() {
   const queueBtn = document.querySelector('.queue-btn');
 
-  const currentFilm = {
-    poster_path: document.querySelector('.modal-card__img').src.slice(31),
-    id: document.querySelector('.modal-card__img').dataset.id,
-    title: document.querySelector('.film-card-content__title').textContent,
-    vote_average: document.querySelector('.rating').textContent,
-    genre_ids: document.querySelector('.film-card-content__item-text-right')
-      .textContent,
-    release_date: document.querySelector('.film-card-content__title').dataset
-      .date,
-  };
-
   if (queueBtn.innerText.toUpperCase() === 'ADD TO QUEUE') {
     const localStorageHasData = JSON.parse(localStorage.getItem(KEY__QUEUE));
 
@@ -180,7 +172,7 @@ function onQueueBtnHandler() {
     arr.splice(indexToDelete, 1);
     localStorage.setItem(KEY__QUEUE, JSON.stringify(arr));
     queueBtn.innerText = 'ADD TO QUEUE';
-    libraryMainPageBuild();
+    libraryQueuePageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();
       defaultPageShow();
