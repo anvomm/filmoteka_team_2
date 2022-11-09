@@ -1,8 +1,12 @@
 import refsList from './refs';
 import { fetchMovieByQuery } from './fetchMovies';
 import { renderList } from './renderFilmList';
+import { renderPagination } from './pagination';
+import { logicForPopularMoviesPag } from './pagination';
 
 const refs = refsList();
+
+export let query = '';
 if (refs.notification) refs.notification.style.visibility = 'hidden';
 
 //добавила этот момент, нужно, чтобы на странице библиотеки ошибку не било
@@ -14,7 +18,7 @@ export async function onSubmitForm(event) {
   refs.notification.style.visibility = 'hidden';
   const page = 1;
 
-  const query = refs.formInput.value.trim();
+  query = refs.formInput.value.trim();
   refs.pagination.style.display = 'flex';
   const loader = new ldLoader({ root: '.ldld.full' });
   loader.on();
@@ -36,10 +40,15 @@ export async function onSubmitForm(event) {
     /*  setTimeout(() => {
       refs.notification.style.visibility = 'hidden';
     }, 8000); */
+
     return;
   }
 
   //   вызываем функцию рисования разметки
   renderList(movies);
   loader.off();
+  //снимаем слушателя с пагинации поп.фильмов
+  refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
+  //рисуем пагинацию
+  renderPagination(response.page, response.total_pages);
 }
