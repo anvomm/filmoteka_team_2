@@ -2,7 +2,10 @@ import refsList from './refs';
 import { fetchMovieByQuery } from './fetchMovies';
 import { renderList } from './renderFilmList';
 import { renderPagination } from './pagination';
-import { logicForPopularMoviesPag } from './pagination';
+import {
+  logicForPopularMoviesPag,
+  logicForSearchedMoviesPas,
+} from './pagination';
 
 const refs = refsList();
 
@@ -54,7 +57,9 @@ export async function onSubmitForm(event) {
   refs.form.reset();
   loader.off();
   //снимаем слушателя с пагинации поп.фильмов
-  refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
+  //refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
   //рисуем пагинацию
   renderPagination(response.page, response.total_pages);
+  refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
+  refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
 }
