@@ -112,12 +112,14 @@
       background-color: $secondary-accent-color;
       color: $white-color;
       .theme-switcher & {
-        background-color: #464646;
+        background-color: #e5e5e5; //#464646
+        color: #3a3a3a;
         transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       }
       &:hover {
         border-color: $header-logo-color;
         color: $white-color;
+        background-color: #3a3a3a;
         .theme-switcher & {
           border-color: #ffdcb4;
         }
