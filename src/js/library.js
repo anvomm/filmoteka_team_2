@@ -1,12 +1,9 @@
 import refsList from './refs';
 import createDefaultMarkUp from '../templates/library-default.hbs';
-import createMarkUp from '../templates/films-card.hbs';
 import {
   fetchTrendingMovies,
   fetchGenres,
-  fetchMovieById,
 } from './fetchMovies';
-import { onOpenModal } from './modal';
 import { modalConnection } from './modalConnection';
 
 const refs = refsList();

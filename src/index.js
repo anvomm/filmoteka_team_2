@@ -3,7 +3,6 @@ import './js/search';
 import './js/themeSwitcher';
 import './js/team';
 
-// import './js/pagination';
 import './js/createPagination';
 
 

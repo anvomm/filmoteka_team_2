@@ -3,13 +3,14 @@ import refsList from './refs';
 import createMarkUp from '../templates/films-card.hbs';
 import { modalConnection } from './modalConnection';
 import { onOpenModal } from './modal';
+import paginationMarkup from './createPagination';
+import { siteConfigs } from './siteConfigs';
+import './paginationEvents';
 
 const refs = refsList();
 
 const KEY__WATCHED = 'watched';
 const KEY__QUEUE = 'queue';
-// localStorage.setItem(KEY__WATCHED, JSON.stringify(watched));
-// localStorage.setItem(KEY__QUEUE, JSON.stringify(queue));
 
 if (
   !JSON.parse(localStorage.getItem(KEY__WATCHED)) ||
@@ -41,9 +42,6 @@ function onWatchedBtn() {
   }
 
   libraryMainPageBuild();
-  /* refsList().filmsElements.forEach(card =>
-    card.addEventListener('click', onOpenModal)
-  ); */
 }
 
 function onQueueBtn() {
@@ -63,12 +61,16 @@ function onQueueBtn() {
   libraryQueuePageBuild();
 }
 
-export function libraryMainPageBuild() {
+export async function libraryMainPageBuild() {
+  siteConfigs.lastFetch = "WATCHED";
   if (
     JSON.parse(localStorage.getItem(KEY__WATCHED)) &&
     JSON.parse(localStorage.getItem(KEY__WATCHED)).length !== 0
   ) {
-    const markup = JSON.parse(localStorage.getItem(KEY__WATCHED))
+    let watchedMovies = JSON.parse(localStorage.getItem(KEY__WATCHED));
+
+    watchedMovies = watchedMovies.splice((siteConfigs.watchedPage - 1 ) * siteConfigs.perPage, siteConfigs.watchedPage * siteConfigs.perPage);
+    const markup = watchedMovies
       .map(movie => createMarkUp(movie))
       .join('');
     defaultClean();
@@ -76,22 +78,43 @@ export function libraryMainPageBuild() {
       refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
   }
 
+  paginationMarkup(
+        Math.ceil(JSON.parse(localStorage.getItem(KEY__WATCHED)).length / siteConfigs.perPage),
+        siteConfigs.watchedPage
+  );
+
+  if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length <= siteConfigs.perPage) {
+        refs.paginationNew.classList.add('pagination--off');  
+   }
+
   refsList().filmsElements.forEach(card =>
     card.addEventListener('click', onOpenModal)
   );
 }
 
-export function libraryQueuePageBuild() {
+export async function libraryQueuePageBuild() {
+  siteConfigs.lastFetch = "QUEUE";
   if (
     JSON.parse(localStorage.getItem(KEY__QUEUE)) &&
     JSON.parse(localStorage.getItem(KEY__QUEUE)).length !== 0
   ) {
-    const markup = JSON.parse(localStorage.getItem(KEY__QUEUE))
+
+    let queueMovies = JSON.parse(localStorage.getItem(KEY__QUEUE));
+
+    queueMovies = queueMovies.splice((siteConfigs.queuePage - 1 ) * siteConfigs.perPage, siteConfigs.queuePage * siteConfigs.perPage);
+    const markup = queueMovies
       .map(movie => createMarkUp(movie))
       .join('');
     defaultClean();
     if (refs.libraryMoviesList)
       refs.libraryMoviesList.insertAdjacentHTML('beforeend', markup);
+    
+      paginationMarkup(
+        Math.ceil(JSON.parse(localStorage.getItem(KEY__QUEUE)).length / siteConfigs.perPage),
+        siteConfigs.queuePage
+    );
+      if (JSON.parse(localStorage.getItem(KEY__QUEUE)).length <= siteConfigs.perPage)
+        refs.paginationNew.classList.add('pagination--off');
   }
   modalConnection();
 }

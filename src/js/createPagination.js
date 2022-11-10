@@ -10,7 +10,6 @@ export default async function paginationMarkup(amountPages, currentPage) {
    
     refsList().paginationBlock.innerHTML = '';
     paginationBlock = '';
-    console.log(currentPage);
     // Left Arrow
     if (currentPage !== 1)
       refsList().leftArrow.classList.remove('visually-hidden');
