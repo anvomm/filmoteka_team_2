@@ -35,8 +35,13 @@ export const logicForPopularMoviesPag = event => {
     renderPagination(pageToFetch, lastPageNumber);
   });
 };
-if (refs.pagination)
-  refs.pagination.addEventListener('click', logicForPopularMoviesPag);
+
+// refs.pagination.addEventListener('click', logicForPopularMoviesPag);
+
+// if (refs.pagination) 
+//   refs.pagination.addEventListener('click', doWhenPageIsClicked);
+
+
 
 export const logicForSearchedMoviesPas = event => {
   checkWhereUserHasClicked(event);
@@ -49,8 +54,8 @@ export const logicForSearchedMoviesPas = event => {
     renderPagination(pageToFetch, lastPageNumber);
   });
 };
-if (refs.pagination)
-  refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
+
+// refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
 
 function renderPaginationIfTotalPagesMoreThanEight(
   pageToFetch,

@@ -1,21 +1,25 @@
 import createMarkUp from '../templates/films-card.hbs';
 import refsList from './refs';
-import { fetchGenres } from './fetchMovies';
+import { siteConfigs } from './siteConfigs';
 import { modalConnection } from './modalConnection';
+import paginationMarkup from './createPagination';
+
 
 const refs = refsList();
 
-export async function renderList(data) {
+export async function renderList(data, page) {
+  console.log('run render');
+  const movies = data.results;
   const loader = new ldLoader({ root: '.ldld.full' });
   loader.on();
   if (refs.filmsList && refs.filmsList.innerHTML) {
     refs.filmsList.innerHTML = '';
   }
-  const genersList = await fetchGenres();
-  data.forEach(el => {
+
+  movies.forEach(el => {
     const newArr = [];
     el.genre_ids.forEach(gener => {
-      const newEl = genersList.find(x => x.id === gener);
+      const newEl = siteConfigs.geners.find(x => x.id === gener);
       newArr.push(newEl.name);
     });
 
@@ -25,8 +29,10 @@ export async function renderList(data) {
 
     el.genre_ids = newArr.length ? newArr.join(', ') : 'Other gener';
   });
+ 
+   paginationMarkup(data.total_pages, page);
 
-  const markup = data
+  const markup = movies
     .map(film => {
       return createMarkUp(film);
     })
@@ -36,9 +42,7 @@ export async function renderList(data) {
 
     loader.off();
   }
-  refs.pagination.style.display = 'flex';
-  if (data.length < 20) {
-    refs.pagination.style.display = 'none';
-  }
+  // refs.pagination.style.display = 'flex';
+
   modalConnection();
 }
