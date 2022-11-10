@@ -1,5 +1,3 @@
-'use strict';
-
 import { fetchTrendingMovies } from './fetchMovies';
 import { fetchMovieByQuery } from './fetchMovies';
 import { renderList } from './renderFilmList';
@@ -9,39 +7,20 @@ const refs = refsList();
 import { query } from './search';
 let pageToFetch;
 
-export function stylizePaginationOnStart(firstPageNumber, lastPageNumber) {
-  stylizePaginationPageOne(firstPageNumber);
-  refs.paginationLastPageBtn.textContent = lastPageNumber;
-}
-
 export function renderPagination(pageToFetch, lastPageNumber) {
-  // stylizePaginationPageOne(pageToFetch);
-  // refs.paginationFirstPageBtn.classList.add('pagination__item_current');
-  //refs.paginationLastPageBtn.textContent = lastPageNumber;
   if (lastPageNumber >= 10) {
     console.log(`total pages = ${lastPageNumber}`);
+    //refs.pagination.style.display = 'flex';
     renderPaginationIfTotalPagesMoreThanEight(pageToFetch, lastPageNumber);
   } else if (lastPageNumber >= 2 || lastPageNumber <= 9) {
     console.log(`total pages = ${lastPageNumber}`);
+    //refs.pagination.style.display = 'flex';
     renderPaginationIfTotalPagesLessThanEight(pageToFetch, lastPageNumber);
   } else {
+    //не прячется при total pages 1
     console.log(`total pages = ${lastPageNumber}`);
-    refs.pagination.style.display = 'none';
+    //refs.pagination.style.display = 'none';
   }
-}
-
-function stylizePaginationPageOne(firstPageNumber) {
-  refs.paginationArrowLeft.classList.add('visually-hidden');
-  refs.paginationArrowRight.classList.remove('visually-hidden');
-  refs.paginationFirstPageBtn.classList.add('pagination__item_current');
-  refs.paginationFirstPageBtn.textContent = firstPageNumber;
-  refs.paginationSecondPageBtn.textContent = firstPageNumber + 1;
-  refs.paginationThirdPageBtn.textContent = firstPageNumber + 2;
-  refs.paginationFourPageBtn.textContent = firstPageNumber + 3;
-  refs.paginationMiddlePageBtn.textContent = firstPageNumber + 4;
-  refs.paginationSixPageBtn.textContent = firstPageNumber + 5;
-  refs.paginationSevenPageBtn.textContent = firstPageNumber + 6;
-  refs.paginationEighthPageBtn.textContent = '...';
 }
 
 export const logicForPopularMoviesPag = event => {
@@ -63,6 +42,7 @@ export const logicForPopularMoviesPag = event => {
 //   refs.pagination.addEventListener('click', doWhenPageIsClicked);
 
 
+
 export const logicForSearchedMoviesPas = event => {
   checkWhereUserHasClicked(event);
   //query = 'cat';
@@ -74,6 +54,7 @@ export const logicForSearchedMoviesPas = event => {
     renderPagination(pageToFetch, lastPageNumber);
   });
 };
+
 // refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
 
 function renderPaginationIfTotalPagesMoreThanEight(
@@ -81,11 +62,20 @@ function renderPaginationIfTotalPagesMoreThanEight(
   lastPageNumber
 ) {
   if (pageToFetch === 1) {
-    stylizePaginationPageOne(pageToFetch);
-    //refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+    refs.paginationArrowLeft.classList.add('visually-hidden');
+    refs.paginationArrowRight.classList.remove('visually-hidden');
+    refs.paginationFirstPageBtn.textContent = pageToFetch;
+    refs.paginationSecondPageBtn.textContent = pageToFetch + 1;
+    refs.paginationThirdPageBtn.textContent = pageToFetch + 2;
+    refs.paginationFourPageBtn.textContent = pageToFetch + 3;
+    refs.paginationMiddlePageBtn.textContent = pageToFetch + 4;
+    refs.paginationSixPageBtn.textContent = pageToFetch + 5;
+    refs.paginationSevenPageBtn.textContent = pageToFetch + 6;
+    refs.paginationEighthPageBtn.textContent = '...';
     refs.paginationLastPageBtn.textContent = lastPageNumber;
-    //removeClassCurrent();
-    addClassCurrent();
+    removeClassCurrent();
+    refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+    //addClassCurrent();
   }
   if (pageToFetch >= 2 && pageToFetch <= 4) {
     refs.paginationArrowLeft.classList.remove('visually-hidden');
@@ -164,8 +154,9 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
     if (pageToFetch === 2) {
       refs.paginationArrowLeft.classList.remove('visually-hidden');
@@ -197,8 +188,9 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
   if (lastPageNumber === 4) {
@@ -220,12 +212,12 @@ function renderPaginationIfTotalPagesLessThanEight(
       removeClassCurrent();
       addClassCurrent();
     }
-
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
   if (lastPageNumber === 5) {
@@ -246,12 +238,12 @@ function renderPaginationIfTotalPagesLessThanEight(
       removeClassCurrent();
       addClassCurrent();
     }
-
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
   if (lastPageNumber === 6) {
@@ -280,8 +272,9 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
   if (lastPageNumber === 7) {
@@ -309,8 +302,9 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
   if (lastPageNumber === 8) {
@@ -340,8 +334,9 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      //removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
   if (lastPageNumber === 9) {
@@ -371,8 +366,9 @@ function renderPaginationIfTotalPagesLessThanEight(
     if (pageToFetch === 1) {
       refs.paginationArrowLeft.classList.add('visually-hidden');
       refs.paginationArrowRight.classList.remove('visually-hidden');
-      // removeClassCurrent();
-      addClassCurrent();
+      removeClassCurrent();
+      refs.paginationFirstPageBtn.classList.add('pagination__item_current');
+      //addClassCurrent();
     }
   }
 }

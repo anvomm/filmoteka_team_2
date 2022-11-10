@@ -58,9 +58,8 @@ export function onOpenModal() {
       poster_path: document.querySelector('.modal-card__img').src.slice(31),
       id: document.querySelector('.modal-card__img').dataset.id,
       title: document.querySelector('.film-card-content__title').textContent,
-      vote_average: document.querySelector('.rating').textContent,
-      genre_ids: document.querySelector('.film-card-content__item-text-right')
-        .textContent,
+      /* vote_average: document.querySelector('.rating').textContent, */
+      genre_ids: document.querySelector('.genres').textContent,
       release_date: document.querySelector('.film-card-content__title').dataset
         .date,
     };
@@ -149,6 +148,7 @@ function onWatchedBtnHandler() {
     localStorage.setItem(KEY__WATCHED, JSON.stringify(arr));
 
     watchedBtn.innerText = 'ADD TO WATCHED';
+
     libraryMainPageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();

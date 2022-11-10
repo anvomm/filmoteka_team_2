@@ -43,5 +43,6 @@ export async function renderList(data, page) {
     loader.off();
   }
   // refs.pagination.style.display = 'flex';
+
   modalConnection();
 }

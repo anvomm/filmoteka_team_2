@@ -43,7 +43,7 @@
   }
   .modal-card__img {
     height: 477px;
-    width: 360px;
+    width: 318px;
   }
 }
 
@@ -133,6 +133,10 @@
   border-radius: 5px;
   background-color: #ff6b01;
   color: #fff;
+
+  .theme-switcher & {
+    background-color: #994d15;
+  }
 }
 
 .modal-btn-close {
@@ -205,10 +209,6 @@
     max-width: 264px;
   }
 
-  .picture {
-    flex-grow: 1;
-  }
-
   .film-card-btn {
     width: 125px;
     padding: 14px 5px;
@@ -233,7 +233,7 @@
 @media screen and (min-width: 1280px) {
   .film-card-content {
     margin-left: 30px;
-    max-width: 396px;
+    max-width: 480px;
   }
 
   .film-card-content__title {

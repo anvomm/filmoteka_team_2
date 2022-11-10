@@ -36,9 +36,10 @@
                             <p class="film-card-content__item-text-right">
                                 {{original_title}}
                             </p>
-                            <p class="film-card-content__item-text-right">{{#each genres}} {{name}}{{#unless @last}},{{/unless}} {{/each}}</p>
+                            <p class="film-card-content__item-text-right genres">{{#each genres}} {{name}}{{#unless @last}},{{/unless}} {{/each}}</p>
                         </li>
                     </ul>
+                    <ul></ul>
                 </div>
             </li>
             <li class="list film-card-content__about">
