@@ -4,6 +4,23 @@ class SiteConfigs {
     this.page = 1;
     this.lastFetch = 'TRENDING';
     this.geners = [];
+    this.perPage = 20;
+    this.watchedPage = 1;
+    this.queuePage = 1;
+  }
+
+  incrementWatchedPage() {
+    this.watchedPage += 1;
+  }
+  incrementQueuePage() {
+    this.queuePage += 1;
+  }
+
+  decrementWatchedPage() {
+    this.watchedPage -= 1;
+  }
+  decrementQueuePage() {
+    this.queuePage -= 1;
   }
 
   incrementPage() {
@@ -18,15 +35,6 @@ class SiteConfigs {
     this.page = 1;
   }
 
-  setSearchQuery(newSearchQuery) {
-    this.searchQuery = newSearchQuery;
-    this.resetPage();
-  }
-
-  getPage() {
-    return this.page;
-  }
-    
 }
 
 export const siteConfigs = new SiteConfigs();
