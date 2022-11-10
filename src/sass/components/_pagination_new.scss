@@ -1,94 +1,127 @@
 .pagination {
-    text-align: center;
-    padding: 30px 0;
+  text-align: center;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+
+  &--off {
+    display: none;
+  }
+
+  &__block {
+    padding: 0;
+    display: flex;
+  }
+
+  &__arrow {
+    display: none;
+    fill: $main-color;
+    width: 40px;
+    height: 40px;
+    align-items: center;
     display: flex;
     justify-content: center;
-
-    &--off {
-        display: none;
+    background-color: $footer-bg-color;
+    border: 2px solid $footer-bg-color;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color 250ms $timing-function, fill 250ms $timing-function,
+      border-color 250ms $timing-function;
+    .theme-switcher & {
+      background-color: #3a3a3a;
+      border: 2px solid #e5e5e5;
+      transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    &__block {
-        padding: 0;
-        display: flex;
+    &:hover {
+      color: $accent-color;
+      fill: $accent-color;
+      border: 2px solid $accent-color;
+      border-radius: 3px;
+      & {
+        background-color: #7e6350;
+        border: 2px solid #e5e5e5;
+        color: #e5e5e5;
+      }
+    }
+  }
+
+  &__dots {
+    width: 40px;
+    height: 40px;
+    color: $main-color;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__svg {
+    stroke: currentColor;
+    width: 16px;
+    height: 16px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: $main-color;
+    display: inline-block;
+
+    & {
+      fill: #e5e5e5;
+    }
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    color: $main-color;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    background-color: $white-color;
+    cursor: pointer;
+    border: 2px solid $white-color;
+    border-radius: 3px;
+    background-color: $white-color;
+    cursor: pointer;
+    transition: color 250ms $timing-function,
+      border-color 250ms $timing-function;
+
+    &:not(:last-child) {
+      margin-right: 10px;
     }
 
-    &__arrow {
-        display: none;
-        fill: $main-color;
-        width: 40px;
-        height: 40px;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        background-color: $footer-bg-color;
-        border: 2px solid $footer-bg-color;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: color 250ms $timing-function, fill 250ms $timing-function,
-            border-color 250ms $timing-function;
+    .theme-switcher & {
+      background-color: #7e6350;
+      border: 2px solid #e5e5e5;
+      color: #e5e5e5;
+      transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        &:hover {
-            color: $accent-color;
-            fill: $accent-color;
-            border: 2px solid $accent-color;
-            border-radius: 3px;
+    &:hover {
+      color: $accent-color;
+      border: 2px solid $accent-color;
+
+      & {
+        background-color: #464646;
+        border: 2px solid #e5e5e5;
+        color: #e5e5e5;
+      }
+    }
+
+    &--active {
+      background-color: $secondary-accent-color;
+      color: $white-color;
+      .theme-switcher & {
+        background-color: #464646;
+        transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      &:hover {
+        border-color: $header-logo-color;
+        color: $white-color;
+        .theme-switcher & {
+          border-color: #ffdcb4;
         }
+      }
     }
-
-    &__dots {
-        width: 40px;
-        height: 40px;
-        color: $main-color;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-
-    &__svg {
-        stroke: currentColor;
-        width: 16px;
-        height: 16px;
-        stroke-width: 0;
-        stroke: currentColor;
-        fill: $main-color;
-        display: inline-block;
-    }
-
-    &__button {
-        width: 40px;
-        height: 40px;
-        color: $main-color;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        border: 0px;
-        background-color: $white-color;
-        cursor: pointer;
-        border: 2px solid $white-color;
-        border-radius: 3px;
-        background-color: $white-color;
-        cursor: pointer;
-        transition: color 250ms $timing-function,
-            border-color 250ms $timing-function;
-
-        &:not(:last-child){
-        margin-right: 10px;
-        }
-
-        &:hover {
-            color: $accent-color;
-            border: 2px solid $accent-color;
-        }
-
-        &--active {
-            background-color: $secondary-accent-color;
-            color: $white-color;
-
-            &:hover {
-                border-color: $header-logo-color;
-                color: $white-color;
-            }
-        }
-    }
+  }
 }
