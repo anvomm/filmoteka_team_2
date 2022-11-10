@@ -8,7 +8,6 @@ import paginationMarkup from './createPagination';
 const refs = refsList();
 
 export async function renderList(data, page) {
-  console.log('run render');
   const movies = data.results;
   const loader = new ldLoader({ root: '.ldld.full' });
   loader.on();
@@ -42,7 +41,6 @@ export async function renderList(data, page) {
 
     loader.off();
   }
-  // refs.pagination.style.display = 'flex';
 
   modalConnection();
 }
