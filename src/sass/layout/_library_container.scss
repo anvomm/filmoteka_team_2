@@ -39,6 +39,11 @@
   font-weight: 500;
   line-height: 1.33;
   letter-spacing: 0.01em;
+
+  .theme-switcher & {
+    color: $white-color;
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 28px;
   }
@@ -104,6 +109,10 @@
   line-height: 1.33;
 
   color: $accent-color;
+
+  .theme-switcher & {
+    color: $white-color;
+  }
 
   @media screen and (min-width: 1280px) {
     font-size: 14px;
