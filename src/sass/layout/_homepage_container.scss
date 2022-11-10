@@ -89,7 +89,7 @@ main {
   }
 
   .theme-switcher & {
-    color: #b39063;
+    color: #fff; //#b39063
   }
 }
 
@@ -108,7 +108,7 @@ main {
   }
 
   .theme-switcher & {
-    color: #b39063;
+    color: #fff; ///#b39063
   }
 }
 
@@ -125,7 +125,7 @@ main {
   gap: 10px;
   color: $accent-color;
   .theme-switcher & {
-    color: #b39063;
+    color: #fff; ///#b39063
   }
 }
 

@@ -7,6 +7,7 @@
   border-radius: 5px;
   margin: auto;
   background-color: $white-color;
+
   .theme-switcher & {
     background-color: #3b362f;
     box-shadow: 0px 0px 24px 0px #ffd9c0;
@@ -130,7 +131,7 @@ div.team__image img {
   line-height: 1.1px;
   margin-bottom: 15px;
   .theme-switcher & {
-    color: #c1906e;
+    color: #fff; ///#c1906e
   }
 }
 
