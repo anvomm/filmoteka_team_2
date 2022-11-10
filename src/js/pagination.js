@@ -14,31 +14,18 @@ export function renderPagination(pageToFetch, lastPageNumber) {
     console.log(`total pages = ${lastPageNumber}`);
     renderPaginationIfTotalPagesLessThanEight(pageToFetch, lastPageNumber);
   } else {
-    //не прячется при total pages 1
-    //разобрались чтоб пряталась при поиске, надо будет проверить в библиотеке
+    //не прячется при total pages 1, разобрались чтоб пряталась при поиске, надо будет проверить в библиотеке, если подключим паги туда
+    //if (data.length < 20) {
+    //refs.pagination.style.display = 'none';
+    // }
     console.log(`total pages = ${lastPageNumber}`);
     //refs.pagination.style.display = 'none';
   }
 }
 
-// export const logicForPopularMoviesPag = event => {
-//   checkWhereUserHasClicked(event);
-
-//   fetchTrendingMovies(pageToFetch).then(data => {
-//     /* refs.filmsList.innerHTML = ''; */
-//     renderList(data.results);
-
-//     let lastPageNumber = data.total_pages;
-
-//     renderPagination(pageToFetch, lastPageNumber);
-//   });
-// };
-// if (refs.pagination)
-//   refs.pagination.addEventListener('click', logicForPopularMoviesPag);
 if (refs.pagination)
   refs.pagination.addEventListener('click', logicForPopularMoviesPag);
 export function logicForPopularMoviesPag(event) {
-  //refs.pagination.removeEventListener('click', logicForSearchedMoviesPas);
   checkWhereUserHasClicked(event);
 
   fetchTrendingMovies(pageToFetch).then(data => {
@@ -51,32 +38,17 @@ export function logicForPopularMoviesPag(event) {
   });
 }
 
-// if (refs.pagination)
-//   refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
 export function logicForSearchedMoviesPas(event) {
-  //refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
   checkWhereUserHasClicked(event);
-  //query = 'cat';
+
   fetchMovieByQuery(query, pageToFetch).then(data => {
+    //Настя закомментила refs.filmsList.innerHTML = ''; в logicForPopularMoviesPag , может и тут не надо?
     refs.filmsList.innerHTML = '';
     renderList(data.results);
     let lastPageNumber = data.total_pages;
     renderPagination(pageToFetch, lastPageNumber);
   });
 }
-// export const logicForSearchedMoviesPas = event => {
-//   checkWhereUserHasClicked(event);
-//   //query = 'cat';
-//   fetchMovieByQuery(query, pageToFetch).then(data => {
-//     refs.filmsList.innerHTML = '';
-//     renderList(data.results);
-//     let lastPageNumber = data.total_pages;
-
-//     renderPagination(pageToFetch, lastPageNumber);
-//   });
-// };
-// if (refs.pagination)
-//   refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
 
 function renderPaginationIfTotalPagesMoreThanEight(
   pageToFetch,

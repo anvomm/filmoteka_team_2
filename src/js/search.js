@@ -56,10 +56,11 @@ export async function onSubmitForm(event) {
   renderList(movies);
   refs.form.reset();
   loader.off();
-  //снимаем слушателя с пагинации поп.фильмов
-  //refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
+
   //рисуем пагинацию
   renderPagination(response.page, response.total_pages);
+  //снимаем слушателя с пагинации поп.фильмов
   refs.pagination.removeEventListener('click', logicForPopularMoviesPag);
+  //вешаем слушателя для пагинации поиск.фильмов
   refs.pagination.addEventListener('click', logicForSearchedMoviesPas);
 }
