@@ -3,7 +3,7 @@ import { fetchMovieByQuery } from './fetchMovies';
 import { renderList } from './renderFilmList';
 // import { renderPagination } from './pagination';
 // import { logicForPopularMoviesPag } from './pagination';
-import { siteConfigs } from './SiteConfigs';
+import { siteConfigs } from './siteConfigs';
 
 const refs = refsList();
 
