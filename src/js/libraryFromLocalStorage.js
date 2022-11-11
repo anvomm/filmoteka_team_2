@@ -12,16 +12,15 @@ const refs = refsList();
 const KEY__WATCHED = 'watched';
 const KEY__QUEUE = 'queue';
 
-libraryMainPageBuild();
-
-/*if (
+if (
   !JSON.parse(localStorage.getItem(KEY__WATCHED)) ||
   JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0
 ) {
-   defaultPageShow(); 
+  if (refs.libraryDefaultContainer)
+    refs.libraryDefaultContainer.style.visibility = 'visible';
 } else {
   libraryMainPageBuild();
-}*/
+}
 
 if (refs.libraryWatchedBtn)
   refs.libraryWatchedBtn.addEventListener('click', onWatchedBtn);
@@ -56,6 +55,8 @@ function onQueueBtn() {
     !JSON.parse(localStorage.getItem(KEY__QUEUE)) ||
     JSON.parse(localStorage.getItem(KEY__QUEUE)).length === 0
   ) {
+    if (refs.libraryDefaultContainer)
+      refs.libraryDefaultContainer.style.visibility = 'visible';
     defaultContainerBuild();
     /* defaultPageShow(); */
   }
@@ -64,6 +65,7 @@ function onQueueBtn() {
 }
 
 export async function libraryMainPageBuild() {
+  defaultClean();
   siteConfigs.lastFetch = 'WATCHED';
   if (
     JSON.parse(localStorage.getItem(KEY__WATCHED)) &&

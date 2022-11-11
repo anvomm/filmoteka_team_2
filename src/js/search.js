@@ -16,9 +16,9 @@ if (refs.form) {
 }
 export async function onSubmitForm(event) {
   event.preventDefault();
-  refs.paginationNew.style.display = 'none';
 
-  refs.notification.style.visibility = 'hidden';
+  if (refs.formInput.value.match(/^\s+$/)) return;
+  refs.paginationNew.style.display = 'none';
   const page = 1;
 
   siteConfigs.searchQuery = refs.formInput.value.trim();
@@ -32,7 +32,6 @@ export async function onSubmitForm(event) {
 
   refs.notification.textContent = `Wow! We found ${response.total_results} results on request "${siteConfigs.searchQuery}"!`;
   refs.notification.style.color = '#818181';
-  refs.notification.style.visibility = 'visible';
 
   if (response.results.length === 0) {
     loader.off();
@@ -52,6 +51,7 @@ export async function onSubmitForm(event) {
 
   //   вызываем функцию рисования разметки
   renderList(response, siteConfigs.page);
+  refs.notification.style.visibility = 'visible';
   refs.form.reset();
   loader.off();
   // //снимаем слушателя с пагинации поп.фильмов

@@ -7,7 +7,6 @@ let paginationBlock = '';
 export default async function paginationMarkup(amountPages, currentPage) {
   refs.paginationNew.classList.remove('pagination--off');
   if (refsList().paginationBlock) {
-   
     refsList().paginationBlock.innerHTML = '';
     paginationBlock = '';
     // Left Arrow
@@ -15,7 +14,7 @@ export default async function paginationMarkup(amountPages, currentPage) {
       refsList().leftArrow.classList.remove('visually-hidden');
     if (currentPage === 1)
       refsList().leftArrow.classList.add('visually-hidden');
-    
+
     if (amountPages < 9) {
       for (let i = 1; i <= amountPages; i += 1) {
         if (i === currentPage) {
@@ -88,5 +87,4 @@ export default async function paginationMarkup(amountPages, currentPage) {
     if (currentPage === amountPages)
       refsList().rightArrow.classList.add('visually-hidden');
   }
-  
 }

@@ -5,6 +5,7 @@
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   width: 100%;
+  overflow-y: scroll;
   .theme-switcher & {
     background-color: #3b362f;
     box-shadow: 0px 0px 24px 0px #ffe1ce;
@@ -16,7 +17,6 @@
     max-width: 280px;
     height: 100%;
     padding: 48px 20px 40px 20px;
-    overflow-y: scroll;
   }
   .modal-card__img {
     height: 356px;
