@@ -81,6 +81,7 @@
   &__button {
     width: 30px;
     height: 30px;
+    font-size: 10px;
     color: $main-color;
     align-items: center;
     display: flex;
@@ -94,6 +95,7 @@
       border-color 250ms $timing-function;
 
     @media screen and (min-width: 768px) {
+      font-size: 12px;
       width: 40px;
       height: 40px;
     }
