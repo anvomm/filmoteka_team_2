@@ -155,12 +155,11 @@ function onWatchedBtnHandler() {
     } else {
       watchedMoviesToAdd.push(currentFilm);
 
-      console.log(watchedMoviesToAdd);
-
       localStorage.setItem(KEY__WATCHED, JSON.stringify(watchedMoviesToAdd));
     }
 
     watchedBtn.innerText = 'REMOVE FROM WATCHED';
+    libraryMainPageBuild();
   } else {
     const arr = JSON.parse(localStorage.getItem(KEY__WATCHED));
     const indexToDelete = arr.findIndex(
@@ -190,11 +189,10 @@ function onQueueBtnHandler() {
     } else {
       moviesToQueue.push(currentFilm);
 
-      console.log(moviesToQueue);
-
       localStorage.setItem(KEY__QUEUE, JSON.stringify(moviesToQueue));
     }
     queueBtn.innerText = 'REMOVE FROM QUEUE';
+    libraryQueuePageBuild();
   } else {
     const arr = JSON.parse(localStorage.getItem(KEY__QUEUE));
     const indexToDelete = arr.findIndex(
