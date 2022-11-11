@@ -23,10 +23,11 @@
     justify-content: center;
     background-color: $footer-bg-color;
     border: 2px solid $footer-bg-color;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     transition: color 250ms $timing-function, fill 250ms $timing-function,
       border-color 250ms $timing-function;
+
     .theme-switcher & {
       background-color: #3a3a3a;
       border: 2px solid #e5e5e5;
@@ -80,7 +81,7 @@
     background-color: $white-color;
     cursor: pointer;
     border: 2px solid $white-color;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: $white-color;
     cursor: pointer;
     transition: color 250ms $timing-function,
