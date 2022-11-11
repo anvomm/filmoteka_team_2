@@ -170,6 +170,11 @@ function onWatchedBtnHandler() {
 
     watchedBtn.innerText = 'ADD TO WATCHED';
 
+    if (JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0) {
+      defaultContainerBuild();
+      return;
+    }
+
     libraryMainPageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();
@@ -201,6 +206,10 @@ function onQueueBtnHandler() {
     arr.splice(indexToDelete, 1);
     localStorage.setItem(KEY__QUEUE, JSON.stringify(arr));
     queueBtn.innerText = 'ADD TO QUEUE';
+    if (JSON.parse(localStorage.getItem(KEY__QUEUE)).length === 0) {
+      defaultContainerBuild();
+      return;
+    }
     libraryQueuePageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();

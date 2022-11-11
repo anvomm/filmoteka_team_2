@@ -142,4 +142,5 @@ export function defaultContainerBuild() {
   if (refs.libraryMoviesList) refs.libraryMoviesList.innerHTML = '';
   if (refs.libraryDefaultContainer)
     refs.libraryDefaultContainer.style.display = 'flex';
+  refs.libraryDefaultContainer.style.visibility = 'visible';
 }
