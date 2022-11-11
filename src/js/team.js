@@ -9,7 +9,7 @@ function onClickTeamOpen() {
   refs.team.classList.remove('is-hidden');
   showModal();
 
-  /* pagePositionOnOpen(); */
+  pagePositionOnOpen();
   addListenersForClose();
 }
 
@@ -60,7 +60,7 @@ function removeAllListeners() {
 function onClose() {
   removeAllListeners();
   showModal();
-  /* pageContentOnClose(); */
+  pageContentOnClose();
 }
 // Select required elements from the DOM
 
