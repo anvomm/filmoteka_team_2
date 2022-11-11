@@ -87,7 +87,6 @@ div.team__image img {
   height: 100px;
   border-radius: 50%;
   position: absolute;
-  /*За счет transition, добиваемся плавности эффекта*/
   -moz-transition: all 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
@@ -131,7 +130,7 @@ div.team__image img {
   line-height: 1.1px;
   margin-bottom: 15px;
   .theme-switcher & {
-    color: #fff; ///#c1906e
+    color: #fff;
   }
 }
 

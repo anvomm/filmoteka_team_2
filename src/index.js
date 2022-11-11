@@ -8,6 +8,3 @@ import './js/createPagination';
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
-
-let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
-console.log(paddingOffset);

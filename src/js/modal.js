@@ -6,7 +6,6 @@ import {
   libraryMainPageBuild,
   libraryQueuePageBuild,
 } from './libraryFromLocalStorage';
-import { defaultPageShow } from './library';
 
 const refs = refsList();
 
@@ -58,7 +57,6 @@ export function onOpenModal() {
       poster_path: document.querySelector('.modal-card__img').src.slice(31),
       id: document.querySelector('.modal-card__img').dataset.id,
       title: document.querySelector('.film-card-content__title').textContent,
-      /* vote_average: document.querySelector('.rating').textContent, */
       genre_ids: document.querySelector('.genres').textContent,
       release_date: document.querySelector('.film-card-content__title').dataset
         .date,
@@ -122,8 +120,6 @@ export function pagePositionOnOpen() {
   } else {
     refs.body.style.paddingRight = '17px';
   }
-
-  // refs.body.style.paddingRight = '17px';
 }
 
 export function pageContentOnClose() {
@@ -145,8 +141,6 @@ export function pageContentOnClose() {
   } else {
     refs.body.style.paddingRight = '0px';
   }
-
-  // refs.body.style.paddingRight = '0px';
 }
 
 function onWatchedBtnHandler() {
@@ -180,7 +174,6 @@ function onWatchedBtnHandler() {
     libraryMainPageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();
-      /* defaultPageShow(); */
     }
   }
 }
@@ -213,7 +206,6 @@ function onQueueBtnHandler() {
     libraryQueuePageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();
-      /* defaultPageShow(); */
     }
   }
 }

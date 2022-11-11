@@ -62,16 +62,13 @@ function onClose() {
   showModal();
   pageContentOnClose();
 }
-// Select required elements from the DOM
 
 function showModal(e) {
   refs.team.classList.toggle('hidden');
 
   if (!refs.team.classList.contains('hidden')) {
-    // Disable scroll
     refs.body.style.overflow = 'hidden';
   } else {
-    // Enable scroll
     refs.body.style.overflow = 'auto';
   }
 }

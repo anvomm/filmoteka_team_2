@@ -73,7 +73,6 @@
   &:hover,
   &:focus {
     transform: scale(1.2);
-    // color: #b2b2b2;
   }
 }
 .header__navigation-link_current {
@@ -99,7 +98,6 @@
   outline: unset;
   border-bottom: 0.5px solid #fff;
   font-size: 14px;
-  //line-height: 1.14; //нет смысла, в инпуте только одна строка
   color: #ffffff;
   transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &::placeholder {
@@ -136,12 +134,6 @@
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
-
-  // padding: 2px;
-  // color: #fff;
-  // background-color: $main-color;
-  // border: 2px solid #ff001b;
-  // border-radius: 3px;
 }
 
 @media screen and (min-width: 768px) {

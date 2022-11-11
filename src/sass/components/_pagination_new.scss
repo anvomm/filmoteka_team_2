@@ -108,7 +108,7 @@
     }
 
     .theme-switcher & {
-      background-color: #3a3a3a; //#7e6350
+      background-color: #3a3a3a;
       border: 2px solid #e5e5e5;
       color: #e5e5e5;
       transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,7 +122,7 @@
       background-color: $secondary-accent-color;
       color: $white-color;
       .theme-switcher & {
-        background-color: #e5e5e5; //#464646
+        background-color: #e5e5e5;
         color: #3a3a3a;
         transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -132,7 +132,7 @@
 
         .theme-switcher & {
           border-color: #e5e5e5;
-          background-color: #e5e5e5; //#464646
+          background-color: #e5e5e5;
           color: #3a3a3a;
         }
       }

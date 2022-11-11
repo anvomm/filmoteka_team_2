@@ -59,8 +59,6 @@ main {
 }
 
 .film-card__title {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -75,8 +73,6 @@ main {
 }
 
 .film-card__genres {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -89,13 +85,11 @@ main {
   }
 
   .theme-switcher & {
-    color: #fff; //#b39063
+    color: #fff;
   }
 }
 
 .film-card__release-date {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -108,7 +102,7 @@ main {
   }
 
   .theme-switcher & {
-    color: #fff; ///#b39063
+    color: #fff;
   }
 }
 
@@ -125,7 +119,7 @@ main {
   gap: 10px;
   color: $accent-color;
   .theme-switcher & {
-    color: #fff; ///#b39063
+    color: #fff;
   }
 }
 

@@ -1,4 +1,3 @@
-import { defaultPageShow } from './library';
 import refsList from './refs';
 import createMarkUp from '../templates/films-card.hbs';
 import { modalConnection } from './modalConnection';
@@ -58,7 +57,6 @@ function onQueueBtn() {
     if (refs.libraryDefaultContainer)
       refs.libraryDefaultContainer.style.visibility = 'visible';
     defaultContainerBuild();
-    /* defaultPageShow(); */
   }
 
   libraryQueuePageBuild();
