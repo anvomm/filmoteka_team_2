@@ -4,7 +4,6 @@ import { siteConfigs } from './siteConfigs';
 import { modalConnection } from './modalConnection';
 import paginationMarkup from './createPagination';
 
-
 const refs = refsList();
 
 export async function renderList(data, page) {
@@ -19,7 +18,7 @@ export async function renderList(data, page) {
     const newArr = [];
     el.genre_ids.forEach(gener => {
       const newEl = siteConfigs.geners.find(x => x.id === gener);
-      newArr.push(newEl.name);
+      if (newEl) newArr.push(newEl.name);
     });
 
     if (newArr.length > 2) {
@@ -28,8 +27,8 @@ export async function renderList(data, page) {
 
     el.genre_ids = newArr.length ? newArr.join(', ') : 'Other gener';
   });
- 
-   paginationMarkup(data.total_pages, page);
+
+  paginationMarkup(data.total_pages, page);
 
   const markup = movies
     .map(film => {

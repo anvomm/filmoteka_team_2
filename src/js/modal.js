@@ -180,7 +180,7 @@ function onWatchedBtnHandler() {
     libraryMainPageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();
-      defaultPageShow();
+      /* defaultPageShow(); */
     }
   }
 }
@@ -213,7 +213,7 @@ function onQueueBtnHandler() {
     libraryQueuePageBuild();
     if (arr.length === 0) {
       defaultContainerBuild();
-      defaultPageShow();
+      /* defaultPageShow(); */
     }
   }
 }

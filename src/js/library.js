@@ -1,9 +1,6 @@
-import refsList from './refs';
+/* import refsList from './refs';
 import createDefaultMarkUp from '../templates/library-default.hbs';
-import {
-  fetchTrendingMovies,
-  fetchGenres,
-} from './fetchMovies';
+import { fetchTrendingMovies, fetchGenres } from './fetchMovies';
 import { modalConnection } from './modalConnection';
 
 const refs = refsList();
@@ -45,3 +42,4 @@ export function defaultPageShow() {
     modalConnection();
   }
 }
+ */
