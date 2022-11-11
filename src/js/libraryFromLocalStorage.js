@@ -12,14 +12,16 @@ const refs = refsList();
 const KEY__WATCHED = 'watched';
 const KEY__QUEUE = 'queue';
 
-if (
+libraryMainPageBuild();
+
+/*if (
   !JSON.parse(localStorage.getItem(KEY__WATCHED)) ||
   JSON.parse(localStorage.getItem(KEY__WATCHED)).length === 0
 ) {
-  /* defaultPageShow(); */
+   defaultPageShow(); 
 } else {
   libraryMainPageBuild();
-}
+}*/
 
 if (refs.libraryWatchedBtn)
   refs.libraryWatchedBtn.addEventListener('click', onWatchedBtn);
