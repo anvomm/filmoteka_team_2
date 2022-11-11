@@ -109,7 +109,21 @@ export function pagePositionOnOpen() {
   refs.body.classList.add('disable-scroll');
   refs.body.dataset.position = pagePosition;
   refs.body.style.top = -pagePosition + 'px';
-  refs.body.style.paddingRight = '17px';
+
+  if (
+    window.navigator.platform === 'iPad' ||
+    window.navigator.platform === 'iPod' ||
+    window.navigator.platform === 'iPhone' ||
+    window.navigator.platform === 'Mac68K' ||
+    window.navigator.platform === 'MacPPC' ||
+    window.navigator.platform === 'MacIntel'
+  ) {
+    return;
+  } else {
+    refs.body.style.paddingRight = '17px';
+  }
+
+  // refs.body.style.paddingRight = '17px';
 }
 
 export function pageContentOnClose() {
@@ -118,7 +132,21 @@ export function pageContentOnClose() {
   refs.body.classList.remove('disable-scroll');
   window.scroll({ top: pagePosition, left: 0 });
   refs.body.removeAttribute('data-position');
-  refs.body.style.paddingRight = '0px';
+
+  if (
+    window.navigator.platform === 'iPad' ||
+    window.navigator.platform === 'iPod' ||
+    window.navigator.platform === 'iPhone' ||
+    window.navigator.platform === 'Mac68K' ||
+    window.navigator.platform === 'MacPPC' ||
+    window.navigator.platform === 'MacIntel'
+  ) {
+    return;
+  } else {
+    refs.body.style.paddingRight = '0px';
+  }
+
+  // refs.body.style.paddingRight = '0px';
 }
 
 function onWatchedBtnHandler() {
