@@ -46,10 +46,10 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-right: 10px;
 
     .theme-switcher & {
       color: #fff;
+      margin-right: 5px;
     }
   }
 
@@ -83,8 +83,13 @@
     transition: color 250ms $timing-function,
       border-color 250ms $timing-function;
 
-    &:not(:last-child) {
-      margin-right: 10px;
+    &:hover,
+    &:focus {
+      border-color: $accent-color;
+    }
+
+    .theme-switcher &:not(:last-child) {
+      margin-right: 5px;
     }
 
     .theme-switcher & {
@@ -109,9 +114,9 @@
       &:hover {
         border-color: $header-logo-color;
         color: $white-color;
-        background-color: #3a3a3a;
+
         .theme-switcher & {
-          border-color: #ffdcb4;
+          border-color: #e5e5e5;
           background-color: #e5e5e5; //#464646
           color: #3a3a3a;
         }
